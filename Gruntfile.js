@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    clean: ['public/*.html','public/js/output.min.js'],
+    clean: ['index.html','public/js/output.min.js','public/css/styl*.css'],
 
     uglify: {
       options: {

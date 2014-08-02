@@ -6,7 +6,7 @@ head
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
-    title M.A.P.S github projects
+    title M.A.P.S Portfolio
     link(rel='stylesheet', href='public/css/styl.min.css')
     //-Custom Fonts 
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
@@ -33,9 +33,7 @@ head
             li
               a(href='http://ayxos.com/') Blog
             li
-              a(href='#') About Me
-            li
-              a(href='#') Contact
+              a(href='#about_me') About Me
 
     .intro-header
       .container
@@ -58,6 +56,10 @@ head
                   a.btn.btn-default.btn-lg(href='https://www.linkedin.com/pub/marco-antonio-pajares/3a/457/52')
                     i.fa.fa-linkedin.fa-fw
                     span.network-name Linkedin
+
+    .content-section-0
+      .container
+        | Some of my projects
 
     .content-section-a
       .container
@@ -102,24 +104,43 @@ head
             hr.section-heading-spacer
             .clearfix
             h2.section-heading
-              | Google Web Fonts and
+              | Backbone DB storage
               br
-              | Font Awesome Icons
+              a(href="http://ayxos.com/workflow/") http://ayxos.com/Backbone_Api/
             p.lead
-              | This template features the 'Lato' font, part of the
-              a(target='_blank', href='http://www.google.com/fonts') Google Web Font library
-              | , as well as
-              a(target='_blank', href='http://fontawesome.io') icons from Font Awesome
-              | .
+              | Simple app to store data on a mongo database using Backbone
+              br
+              | Code available on 
+              a(target='_blank', href='https://github.com/cybermarkus1/Backboneplate_Require') Github
           .col-lg-5.col-lg-offset-2.col-sm-6
-            img.img-responsive(src='public/img/phones.png', alt='')
+            img.img-responsive(src='public/img/Mac.png', alt='')
 
-    .banner
+    .content-section-b
       .container
         .row
+          .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
+            hr.section-heading-spacer
+            .clearfix
+            h2.section-heading
+              | FPS Game using UDK (UE 3.0)
+              br
+              a(href="https://github.com/cybermarkus1/UDK-PaintballUC3M") https://github.com/cybermarkus1/UDK-PaintballUC3M
+            p.lead
+              | A UDK game made using Blender, 3Dmax and sketchup.
+              br
+              | Code available on 
+              a(target='_blank', href='https://github.com/cybermarkus1/UDK-PaintballUC3M') Github
+          .col-lg-5.col-sm-pull-6.col-sm-6
+            iframe(width='560', height='315', src='http://www.youtube.com/embed/wXhWU8UySsI', frameborder='0', allowfullscreen='allowfullscreen')
+
+    .about#about_me
+      .container
+        .row
+          .col-lg-3
+            img.img-responsive(src='https://media.licdn.com/media/p/1/005/06a/25a/19d7f97.jpg', alt='')
           .col-lg-6
-            h2 Connect to Start Bootstrap:
-          .col-lg-6
+            | Marco A. Pajares is a computer programmer, passionate about tech and JS world, newbie entrepreneur, former game developer, Carlos III former pupil and currently, Frontend developer and frontend Supervisor in Buongiorno, a NTT Docomo Company.
+
             ul.list-inline.banner-social-buttons
               li
                 a.btn.btn-default.btn-lg(href='https://twitter.com/SBootstrap')
@@ -133,23 +154,17 @@ head
                 a.btn.btn-default.btn-lg(href='#')
                   i.fa.fa-linkedin.fa-fw
                   span.network-name Linkedin
-
     footer
       .container
         .row
           .col-lg-12
             ul.list-inline
               li
-                a(href='#home') Home
+                a(href='http://ayxos.com/') Blog
               li.footer-menu-divider ⋅
               li
-                a(href='#about') About
-              li.footer-menu-divider ⋅
-              li
-                a(href='#services') Services
-              li.footer-menu-divider ⋅
-              li
-                a(href='#contact') Contact
+                a(href='#about_me') About Me
+
             p.copyright.text-muted.small Copyright © M.A.P.S 2014. All Rights Reserved
 
     script(type='text/javascript', src='public/js/output.min.js')
