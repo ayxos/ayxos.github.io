@@ -1,5 +1,5 @@
 
-/* line 11 : /home/home-ub/projects/cybermarkus1.github.io/src/stylesheet.styl */
+/* line 14 : /home/home-ub/projects/cybermarkus1.github.io/src/stylesheet.styl */
 
 /* line 1 : /home/home-ub/projects/cybermarkus1.github.io/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
 
@@ -21,4 +21,9 @@
 /* line 9 : /home/home-ub/projects/cybermarkus1.github.io/src/stylesheet.styl */
 .banner-social-buttons {
   padding-top: 5%;
+}
+
+/* line 12 : /home/home-ub/projects/cybermarkus1.github.io/src/stylesheet.styl */
+.section-heading {
+  word-wrap: break-word;
 }
