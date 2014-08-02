@@ -3,42 +3,33 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    //Create a simple Server using connect plugin
-    connect: {
-      server: {
-        options: {
-          port: 8001,
-          hostname: 'localhost',
-          base: 'public',
-          keepalive: true
-        }
-      }
-    },
+    clean: ['public/*.html','public/js/output.min.js'],
 
     uglify: {
+      options: {
+        mangle: false
+      },
       my_target: {
         files: {
-          'public/js/my_js.min.js': ['src/js/xmlhttp.js']
+          'public/js/output.min.js': ['public/js/jquery-1.11.0.js','public/js/bootstrap.min.js']
         }
       }
     },
 
-    clean: ['public/*.html'],
-
     jade: {
-        compile: {
-            options: {
-                client: false,
-                pretty: true
-            },
-            files: [ {
-              cwd: "src",
-              src: "**/*.jade",
-              dest: ".",
-              expand: true,
-              ext: ".html"
-            } ]
-        }
+      compile: {
+        options: {
+            client: false,
+            pretty: true
+        },
+        files: [ {
+          cwd: "src",
+          src: "**/*.jade",
+          dest: ".",
+          expand: true,
+          ext: ".html"
+        } ]
+      }
     },
 
     stylus: {
@@ -56,7 +47,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         files: {
-          'public/css/styl.min.css': [ 'public/css/styl.css' ]
+          'public/css/styl.min.css': [ 'public/css/*.css' ]
         }
       }
     },
@@ -96,6 +87,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   //default task
-  grunt.registerTask('default', ['clean', 'jade', 'stylus', 'cssmin']);
+  grunt.registerTask('default', ['clean', 'uglify', 'jade', 'stylus', 'cssmin']);
 
 };

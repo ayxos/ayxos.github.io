@@ -1,41 +1,9 @@
 
-/* line 23 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
+/* line 3 : /home/home-ub/projects/cybermarkus1.github.io/src/stylesheet.styl */
 
-/* line 1 : /Users/Marko/projects/cybermarkus1.github.io/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
+/* line 1 : /home/home-ub/projects/cybermarkus1.github.io/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
 
-/* line 1 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #f8f8ff;
-  margin: 0;
-}
-
-/* line 6 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
-article {
-  padding: 50px;
-}
-
-/* line 8 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
-a {
-  color: #00b7ff;
-}
-
-/* line 11 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
-footer {
-  position: fixed;
-  bottom: 0%;
-  background: #000;
-  color: #fff;
-  width: 98%;
-  padding: 1%;
-}
-
-/* line 19 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
-#entries {
-  margin-bottom: 4%;
-}
-
-/* line 21 : /Users/Marko/projects/cybermarkus1.github.io/src/stylesheet.styl */
-#entries .entry {
-  margin: 2%;
+/* line 1 : /home/home-ub/projects/cybermarkus1.github.io/src/stylesheet.styl */
+.amoh {
+  margin: 1%;
 }

@@ -1,59 +1,155 @@
 doctype html
-html(lang='en-us')
+html(lang='en')
 head
     meta(charset='utf-8')
-    title M.A.P.S github projects
-    meta(name='description', content='this is my portfolio')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
-    link(rel='stylesheet', href='public/css/xpressio.css')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title M.A.P.S github projects
     link(rel='stylesheet', href='public/css/styl.min.css')
+    //-Custom Fonts 
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', rel='stylesheet', type='text/css')
+    //-HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+    //-WARNING: Respond.js doesn't work if you view the page via file://- 
+    //-if lt IE 9
+      script(src='https://-oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://-oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
   body
-    header.bck.b_black.text.center.color.c_white.padding_small
-      nav.inline.middle.margin_small
-        span.logo
-          span M.A.P.S
-          span.text.normal github-gist
-      .inline.width40
-      nav.inline.middle.margin_small
-        span.margin_right_medium
-          a(href='//twitter.com/share', target='_blank', data-url='//xpress.io', data-text='Small and Fast RWD front-end framework', data-via='dreyacosta', data-lang='es', data-count='none', data-hashtags='xpressio')
-            i.fa.fa-twitter
-            | Share
-        span
-          a(href='//github.com/dreyacosta/xpressio/archive/master.zip', target='_blank')
-            i.fa.fa-cloud-download
-            | Download
-    section.bck.b_stimulation.text.center.book.color.c_white
-      .padding_big
+    nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+      .container
+        //-Brand and toggle get grouped for better mobile display 
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') M.A.P.S
+        //-Collect the nav links, forms, and other content for toggling 
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='http://ayxos.com/') Blog
+            li
+              a(href='#') About Me
+            li
+              a(href='#') Contact
+
+    .intro-header
+      .container
         .row
-          .col12
-            h1.text.book.margin_bottom_medium
-              span M.A.P.S
-              img.width20.border.rad_circle.solid.all_medium.small(src='http://m.c.lnkd.licdn.com/media/p/2/005/018/23b/2d10631.jpg')
+          .col-lg-12
+            .intro-message
+              h1 M.A.P.S
+              h3 Check my projects!
+              hr.intro-divider
+              ul.list-inline.intro-social-buttons
+                li
+                  a.btn.btn-default.btn-lg(href='https://twitter.com/iBro_13')
+                    i.fa.fa-twitter.fa-fw
+                    span.network-name Twitter
+                li
+                  a.btn.btn-default.btn-lg(href='https://github.com/cybermarkus1')
+                    i.fa.fa-github.fa-fw
+                    span.network-name Github
+                li
+                  a.btn.btn-default.btn-lg(href='https://www.linkedin.com/pub/marco-antonio-pajares/3a/457/52')
+                    i.fa.fa-linkedin.fa-fw
+                    span.network-name Linkedin
 
-            h3.text.thin.margin_bottom_medium Some of my projects.
-
-    section.bck.b_mysauce4.text.center
-      .site_width.padding_big
-        h2.margin_bottom_small.text.color.c_mysauce3 Simple to use and customize
-        h3.margin_bottom_big.text.book.color.c_mysauce3_medium
-          | Don't worry about your CSS knowledge, just set your settings, colors and build your xpressio theme in less than 5 minutes.
+    .content-section-a
+      .container
         .row
-          .col4
-            h2.fa.fa-tachometer.margin_bottom_small
-            h4.margin_top_small.margin_bottom_small CSS3 Powered
-            p CSS3 it's fun, with powerful features that makes it easy to create a Web Site.
-          .col4
-            h2.fa.fa-wrench.margin_bottom_small
-            h4.margin_top_small.margin_bottom_small Built with Stylus
-            p Preprocesors are great tools providing scalable and maintainable CSS.
-          .col4
-            h2.fa.fa-leaf.margin_bottom_small
-            h4.margin_top_small.margin_bottom_small Lightweight
-            p High performance Web Sites are a plus so Xpressio is lightweight.
+          .col-lg-5.col-sm-6
+            hr.section-heading-spacer
+            .clearfix
+            h2.section-heading
+              | London BusStop Finder
+              br
+              a(href="http://ayxos.com/londonBusFinder/") http://ayxos.com/londonBusFinder/
+            p.lead
+              | A Node app that lets you find where are your closest busStop on London and list every Bus line and time left.
+              br
+              | Code available on 
+              a(target='_blank', href='https://github.com/cybermarkus1/LondonBusStopFinder') Github
+          .col-lg-5.col-lg-offset-2.col-sm-6
+            img.img-responsive(src='public/img/dog.png', alt='')
+ 
+    .content-section-b
+      .container
+        .row
+          .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
+            hr.section-heading-spacer
+            .clearfix
+            h2.section-heading
+              | Frontend Workflow
+              br
+              a(href="http://ayxos.com/workflow/") http://ayxos.com/workflow/
+            p.lead
+              | A slides that show what i consider that frontend must work
+              br
+              | Code available on 
+              a(target='_blank', href='https://github.com/cybermarkus1/Frontend_workflow_slides') Github
+          .col-lg-5.col-sm-pull-6.col-sm-6
+            img.img-responsive(src='public/img/ipad.png', alt='')
 
+    .content-section-a
+      .container
+        .row
+          .col-lg-5.col-sm-6
+            hr.section-heading-spacer
+            .clearfix
+            h2.section-heading
+              | Google Web Fonts and
+              br
+              | Font Awesome Icons
+            p.lead
+              | This template features the 'Lato' font, part of the
+              a(target='_blank', href='http://www.google.com/fonts') Google Web Font library
+              | , as well as
+              a(target='_blank', href='http://fontawesome.io') icons from Font Awesome
+              | .
+          .col-lg-5.col-lg-offset-2.col-sm-6
+            img.img-responsive(src='public/img/phones.png', alt='')
+
+    .banner
+      .container
+        .row
+          .col-lg-6
+            h2 Connect to Start Bootstrap:
+          .col-lg-6
+            ul.list-inline.banner-social-buttons
+              li
+                a.btn.btn-default.btn-lg(href='https://twitter.com/SBootstrap')
+                  i.fa.fa-twitter.fa-fw
+                  span.network-name Twitter
+              li
+                a.btn.btn-default.btn-lg(href='https://github.com/IronSummitMedia/startbootstrap')
+                  i.fa.fa-github.fa-fw
+                  span.network-name Github
+              li
+                a.btn.btn-default.btn-lg(href='#')
+                  i.fa.fa-linkedin.fa-fw
+                  span.network-name Linkedin
 
     footer
-      blockquote @2014 by M.A.P.S Powered by Node.js, Grunt
-    script(type='text/javascript', src='public/javascripts/xpressio.js')
+      .container
+        .row
+          .col-lg-12
+            ul.list-inline
+              li
+                a(href='#home') Home
+              li.footer-menu-divider ⋅
+              li
+                a(href='#about') About
+              li.footer-menu-divider ⋅
+              li
+                a(href='#services') Services
+              li.footer-menu-divider ⋅
+              li
+                a(href='#contact') Contact
+            p.copyright.text-muted.small Copyright © M.A.P.S 2014. All Rights Reserved
+
+    script(type='text/javascript', src='public/js/output.min.js')
