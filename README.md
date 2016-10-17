@@ -1,6 +1,4 @@
 cybermarkus1.github.io
 ======================
 
-my profile
-
-ayxos.com
+[My portfolio](cybermarkus1.github.io)
