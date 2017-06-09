@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+node_js:
+  - "5"
+before_install:
+  - gem update --system
+  - npm install -g grunt
+  - npm install
+matrix:
+  fast_finish: true
+cache:
+  directories:
+    - node_modules
