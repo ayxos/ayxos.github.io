@@ -5,7 +5,7 @@
   "description": "node_express",
   "version": "0.0.1",
   "dependencies": {
-    "mime": "*"
+    "mime": ">=2.0.2"
   },
   "devDependencies": {
     "grunt": "*",
