@@ -16,7 +16,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-clean": "*",
-    "grunt-contrib-connect": "*",
+    "grunt-contrib-connect": ">=2.0.0",
     "grunt-contrib-cssmin": "*"
   }
 }
