@@ -327,10 +327,10 @@
       </div>
       <nav class="topbar__nav">
         <a class="navlink" href="#journey">Journey</a>
-        <a class="navlink" href="#projects">Builds</a>
+        <a class="navlink" href="#projects">Open Source</a>
         <a class="navlink" href="#skills">Toolkit</a>
         <a class="navlink" href="#contact">Contact</a>
-        <a class="navlink navlink--ext" href="https://ayxos.github.io/classic.html" target="_blank" rel="noopener" title="My previous, open-source portfolio">Open Source ↗</a>
+        <a class="navlink navlink--ext" href="https://ayxos.github.io/classic.html" target="_blank" rel="noopener" title="My previous portfolio site">Classic ↗</a>
         <button class="toggle" id="theme-toggle" aria-label="Toggle day / night" title="Day / Night">☀</button>
       </nav>
     </div>
@@ -487,8 +487,8 @@
   <section id="projects">
     <div class="wrap">
       <span class="eyebrow">Inventory · open a chest</span>
-      <h2 class="sec-title">Things I've built</h2>
-      <p class="sec-lead">A sampler from ~57 public repos and a decade of side quests — libraries, games, tools and experiments.</p>
+      <h2 class="sec-title">Open Source Projects</h2>
+      <p class="sec-lead">A sampler from ~57 public repos and a decade of side quests — newest first: libraries, games, tools and experiments, all on GitHub.</p>
 
       <div class="inv" id="inv"></div>
 
@@ -550,12 +550,12 @@
         <a class="btn" href="https://github.com/ayxos" target="_blank" rel="noopener">GitHub · ayxos</a>
         <a class="btn" href="https://www.linkedin.com/in/marco-a-pajares-silva-0524573a/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://twitter.com/thecodetrotter" target="_blank" rel="noopener">X · @thecodetrotter</a>
-        <a class="btn" href="https://ayxos.github.io/classic.html" target="_blank" rel="noopener">◱ Open Source Projects ↗</a>
+        <a class="btn" href="https://ayxos.github.io/classic.html" target="_blank" rel="noopener">◱ Classic portfolio ↗</a>
       </div>
     </div>
   </section>
 
-  <footer>Built block by block · Marco A. Pajares Silva · Madrid → Hamburg · <a href="https://ayxos.github.io/classic.html" style="color:var(--diamond);text-decoration:none">open source projects ↗</a> · <b>■</b> keep mining</footer>
+  <footer>Built block by block · Marco A. Pajares Silva · Madrid → Hamburg · <a href="https://ayxos.github.io/classic.html" style="color:var(--diamond);text-decoration:none">classic portfolio ↗</a> · <b>■</b> keep mining</footer>
 
   <canvas id="walker" aria-hidden="true"></canvas>
 </div>
@@ -596,17 +596,17 @@
 
   /* ---------- PROJECTS ---------- */
   var PROJECTS = [
+    {n:"lanny",star:"Py · 2026",recent:true,c:"#3ac47a",d:"A network-monitoring experiment in Python — still scratching the systems itch.",t:["Python","Networking"],links:[["Code","https://github.com/ayxos/lanny"]]},
+    {n:"decky-chat-plugin",star:"2025",recent:true,c:"#4fd6e6",d:"A Decky Loader plugin for the Steam Deck — real-time messaging between your Deck and your phone over WebSockets.",t:["Steam Deck","Decky Loader","WebSockets","TypeScript"],links:[["Code","https://github.com/ayxos/decky-chat-plugin"]]},
+    {n:"MyPass",star:"2025",recent:true,c:"#8892c8",d:"A secure password manager — store and manage all your credentials in one place. React front-end, Express API, MySQL.",t:["React","Express","MySQL"],links:[["Code","https://github.com/ayxos/MyPass"]]},
+    {n:"social-rehub",star:"2016",recent:true,c:"#5aa24a",d:"A Chrome extension that measures your social-media addiction — a gentle nudge to reclaim your attention.",t:["Chrome Extension","JavaScript"],links:[["Code","https://github.com/ayxos/social-rehub"]]},
     {n:"react-cellar",star:"★ 11",rare:true,c:"#4fd6e6",d:"A wine-cellar app rebuilt in React to help others learn the stack — end to end with TypeScript, MongoDB and Redux.",t:["TypeScript","MongoDB","Redux","Webpack"],links:[["Code","https://github.com/ayxos/react-cellar"]]},
     {n:"backbone-wizard",star:"★ 11",rare:true,c:"#e9c93a",d:"A tidy, reusable multi-step wizard component library for Backbone.js.",t:["Backbone","JavaScript","RequireJS"],links:[["Code","https://github.com/ayxos/backbone-wizard"]]},
     {n:"UC3M Paintball",star:"10/10",rare:true,c:"#f0655b",d:"The 3D multiplayer paintball game thesis — UDK engine, Kinect + Wiimote controls, day/night cycle, weather and AI.",t:["UDK","Blender","Kinect","3ds Max"],links:[["Code","https://github.com/0-maps/UDK-PaintballUC3M"],["Video","https://youtu.be/wXhWU8UySsI"]]},
     {n:"socketGameIO",star:"★ 4",c:"#5aa24a",d:"A real-time online multiplayer game built on JavaScript and WebSockets via socket.io.",t:["socket.io","WebSockets","Node"],links:[["Code","https://github.com/ayxos/socketGameIO"]]},
     {n:"htmlEditor",star:"★ 7",c:"#3aa5e6",d:"A Markdown / HTML online editor aimed at translators — with word count, a speed timer and revenue-per-word calc.",t:["JavaScript","Markdown"],links:[["Code","https://github.com/ayxos/htmlEditor"]]},
     {n:"node_APIrest",star:"★ 3",c:"#8892c8",d:"A REST API system built on Mongoose with Node and Express — a clean back-end starting point.",t:["Node","Express","Mongoose"],links:[["Code","https://github.com/ayxos/node_APIrest"]]},
-    {n:"LondonBusStopFinder",star:"★ 2",c:"#e6b23a",d:"A finder for London's bus stops — a small mapping tool from the London days.",t:["JavaScript","Maps"],links:[["Code","https://github.com/ayxos/LondonBusStopFinder"]]},
-    {n:"lanny",star:"Py · 2026",recent:true,c:"#3ac47a",d:"A network-monitoring experiment in Python — still scratching the systems itch.",t:["Python","Networking"],links:[["Code","https://github.com/ayxos/lanny"]]},
-    {n:"decky-chat-plugin",star:"2025",recent:true,c:"#4fd6e6",d:"A Decky Loader plugin for the Steam Deck — real-time messaging between your Deck and your phone over WebSockets.",t:["Steam Deck","Decky Loader","WebSockets","TypeScript"],links:[["Code","https://github.com/ayxos/decky-chat-plugin"]]},
-    {n:"MyPass",star:"2025",recent:true,c:"#8892c8",d:"A secure password manager — store and manage all your credentials in one place. React front-end, Express API, MySQL.",t:["React","Express","MySQL"],links:[["Code","https://github.com/ayxos/MyPass"]]},
-    {n:"social-rehub",star:"Ext",c:"#5aa24a",d:"A Chrome extension that measures your social-media addiction — a gentle nudge to reclaim your attention.",t:["Chrome Extension","JavaScript"],links:[["Code","https://github.com/ayxos/social-rehub"]]}
+    {n:"LondonBusStopFinder",star:"★ 2",c:"#e6b23a",d:"A finder for London's bus stops — a small mapping tool from the London days.",t:["JavaScript","Maps"],links:[["Code","https://github.com/ayxos/LondonBusStopFinder"]]}
   ];
   var inv = document.getElementById("inv");
   PROJECTS.forEach(function(p){
