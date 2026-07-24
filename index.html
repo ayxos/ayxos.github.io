@@ -315,6 +315,25 @@
   #walker{position:fixed;left:0;bottom:0;width:100%;height:220px;z-index:40;pointer-events:none;image-rendering:pixelated}
   .page{padding-bottom:60px}
 
+  /* ===== GAME-DEV REEL ===== */
+  #reel .reel{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
+  @media(min-width:720px){#reel .reel{grid-template-columns:1fr 1fr}}
+  .vid{position:relative;aspect-ratio:16/9;width:100%;border:0;cursor:pointer;overflow:hidden;
+    background:linear-gradient(135deg,#12232e,#0b1620);color:var(--ink);text-align:left;font-family:var(--mono);
+    box-shadow:inset 3px 3px 0 var(--hi),inset -3px -3px 0 var(--lo),0 10px 0 -3px rgba(0,0,0,.28);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:16px;transition:transform .14s ease}
+  .vid:hover{transform:translateY(-4px)}
+  .vid__tag{position:absolute;top:0;left:0;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    color:#04201d;background:var(--diamond);padding:5px 10px;font-weight:800}
+  .vid__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;
+    background:var(--gold);box-shadow:inset 3px 3px 0 rgba(255,255,255,.45),inset -3px -3px 0 rgba(0,0,0,.35);
+    display:grid;place-items:center;transition:transform .14s ease,background-color .2s}
+  .vid:hover .vid__play{transform:translate(-50%,-50%) scale(1.1);background:var(--diamond-2)}
+  .vid__play::after{content:"";width:0;height:0;border-left:20px solid #04201d;
+    border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+  .vid__title{position:relative;z-index:2;font-size:.94rem;font-weight:700;letter-spacing:.02em;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+  .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
   /* ===== MODERN / CLASSIC VIEW SWITCH ===== */
   .viewswitch{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:130;display:flex;
     font-family:var(--mono);background:#0d1219;box-shadow:0 8px 20px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.07)}
@@ -341,6 +360,7 @@
       </div>
       <nav class="topbar__nav">
         <a class="navlink" href="#journey">Journey</a>
+        <a class="navlink" href="#reel">Reel</a>
         <a class="navlink" href="#projects">Builds</a>
         <a class="navlink" href="#skills">Toolkit</a>
         <a class="navlink" href="#contact">Contact</a>
@@ -496,6 +516,27 @@
     </div>
   </section>
 
+  <!-- ===== REEL ===== -->
+  <section id="reel">
+    <div class="wrap">
+      <span class="eyebrow">Cutscenes · press play</span>
+      <h2 class="sec-title">Roll the tape</h2>
+      <p class="sec-lead">Before the ad exchanges came 3D games and robots. A couple of clips from the UC3M game-dev days.</p>
+      <div class="reel">
+        <button class="vid" type="button" data-yt="wXhWU8UySsI" aria-label="Play: UC3M Paintball, my 3D game thesis">
+          <span class="vid__tag">Thesis · UDK</span>
+          <span class="vid__play" aria-hidden="true"></span>
+          <span class="vid__title">UC3M Paintball — my 3D game thesis (UDK · Kinect)</span>
+        </button>
+        <button class="vid" type="button" data-yt="A1anLQUxnzg" aria-label="Play: Arduino robot">
+          <span class="vid__tag">Hardware · Arduino</span>
+          <span class="vid__play" aria-hidden="true"></span>
+          <span class="vid__title">Arduino robot with proximity sensing</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PROJECTS ===== -->
   <section id="projects">
     <div class="wrap">
@@ -609,7 +650,61 @@
         </div>
       </div>
     </div>
+    <div class="content-section-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12" style="text-align:center">
+            <h2 class="section-heading">More recent projects</h2>
+            <p class="lead">A few open-source builds created since this page was last updated (2016).</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="content-section-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
+            <h2 class="section-heading">lanny<br><a target='_blank' href="https://github.com/ayxos/lanny">GitHub &#8599;</a></h2>
+            <p class="lead">A network-monitoring experiment written in Python (2026).<br>Code available on <a target="_blank" href="https://github.com/ayxos/lanny">Github</a></p>
+          </div>
+          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="lanny" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg13" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fae7a"/><stop offset="1" stop-color="#188a5c"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg13)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><circle cx="150" cy="118" r="12"/><circle cx="252" cy="108" r="12"/><circle cx="210" cy="182" r="12"/><circle cx="200" cy="122" r="12"/><line x1="162" y1="120" x2="188" y2="121"/><line x1="212" y1="118" x2="240" y2="111"/><line x1="205" y1="134" x2="210" y2="170"/></g></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-sm-6">
+            <h2 class="section-heading">decky-chat-plugin<br><a target='_blank' href="https://github.com/ayxos/decky-chat-plugin">GitHub &#8599;</a></h2>
+            <p class="lead">A Decky Loader plugin for the Steam Deck — real-time messaging between your Deck and your phone over WebSockets (2025).<br>Code available on <a target="_blank" href="https://github.com/ayxos/decky-chat-plugin">Github</a></p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="decky-chat-plugin" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a86e6"/><stop offset="1" stop-color="#2160c0"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg14)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="130" y="106" width="140" height="72" rx="22"/><circle cx="156" cy="142" r="12"/><circle cx="244" cy="142" r="12"/><rect x="180" y="122" width="40" height="34" rx="6"/><path d="M234 82 h38 a8 8 0 0 1 8 8 v14 a8 8 0 0 1 -8 8 h-12 l-12 10 v-10 h-14 a8 8 0 0 1 -8 -8 v-14 a8 8 0 0 1 8 -8 z"/></g></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
+            <h2 class="section-heading">MyPass<br><a target='_blank' href="https://github.com/ayxos/MyPass">GitHub &#8599;</a></h2>
+            <p class="lead">A secure password manager built with React, Express and MySQL — store and manage all your credentials in one place (2025).<br>Code available on <a target="_blank" href="https://github.com/ayxos/MyPass">Github</a></p>
+          </div>
+          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="MyPass" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#4143d0"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg15)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="158" y="126" width="84" height="62" rx="10"/><path d="M174 126 v-14 a26 26 0 0 1 52 0 v14"/><circle cx="200" cy="150" r="8" fill="#fff" stroke="none"/><line x1="200" y1="156" x2="200" y2="172"/></g></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-sm-6">
+            <h2 class="section-heading">social-rehub<br><a target='_blank' href="https://github.com/ayxos/social-rehub">GitHub &#8599;</a></h2>
+            <p class="lead">A Chrome extension that measures your social-media addiction — a gentle nudge to reclaim your attention.<br>Code available on <a target="_blank" href="https://github.com/ayxos/social-rehub">Github</a></p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="social-rehub" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg16" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0655b"/><stop offset="1" stop-color="#cf433a"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg16)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="166" y="84" width="68" height="112" rx="12"/><line x1="166" y1="104" x2="234" y2="104"/><line x1="166" y1="176" x2="234" y2="176"/><line x1="186" y1="120" x2="214" y2="120"/><line x1="186" y1="160" x2="214" y2="160"/><path d="M188 122 h24 l-12 16 z" fill="#fff" stroke="none"/><path d="M188 158 h24 l-12 -16 z" fill="#fff" stroke="none"/></g></svg></div>
+        </div>
+      </div>
+    </div>
+<div class="content-section-b">
       <div class="container">
         <div class="row">
           <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
@@ -778,61 +873,7 @@
         </div>
       </div>
     </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12" style="text-align:center">
-            <h2 class="section-heading">More recent projects</h2>
-            <p class="lead">A few open-source builds created since this page was last updated (2016).</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">lanny<br><a target='_blank' href="https://github.com/ayxos/lanny">GitHub &#8599;</a></h2>
-            <p class="lead">A network-monitoring experiment written in Python (2026).<br>Code available on <a target="_blank" href="https://github.com/ayxos/lanny">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="lanny" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg13" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fae7a"/><stop offset="1" stop-color="#188a5c"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg13)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><circle cx="150" cy="118" r="12"/><circle cx="252" cy="108" r="12"/><circle cx="210" cy="182" r="12"/><circle cx="200" cy="122" r="12"/><line x1="162" y1="120" x2="188" y2="121"/><line x1="212" y1="118" x2="240" y2="111"/><line x1="205" y1="134" x2="210" y2="170"/></g></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">decky-chat-plugin<br><a target='_blank' href="https://github.com/ayxos/decky-chat-plugin">GitHub &#8599;</a></h2>
-            <p class="lead">A Decky Loader plugin for the Steam Deck — real-time messaging between your Deck and your phone over WebSockets (2025).<br>Code available on <a target="_blank" href="https://github.com/ayxos/decky-chat-plugin">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="decky-chat-plugin" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a86e6"/><stop offset="1" stop-color="#2160c0"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg14)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="130" y="106" width="140" height="72" rx="22"/><circle cx="156" cy="142" r="12"/><circle cx="244" cy="142" r="12"/><rect x="180" y="122" width="40" height="34" rx="6"/><path d="M234 82 h38 a8 8 0 0 1 8 8 v14 a8 8 0 0 1 -8 8 h-12 l-12 10 v-10 h-14 a8 8 0 0 1 -8 -8 v-14 a8 8 0 0 1 8 -8 z"/></g></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">MyPass<br><a target='_blank' href="https://github.com/ayxos/MyPass">GitHub &#8599;</a></h2>
-            <p class="lead">A secure password manager built with React, Express and MySQL — store and manage all your credentials in one place (2025).<br>Code available on <a target="_blank" href="https://github.com/ayxos/MyPass">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="MyPass" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#4143d0"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg15)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="158" y="126" width="84" height="62" rx="10"/><path d="M174 126 v-14 a26 26 0 0 1 52 0 v14"/><circle cx="200" cy="150" r="8" fill="#fff" stroke="none"/><line x1="200" y1="156" x2="200" y2="172"/></g></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">social-rehub<br><a target='_blank' href="https://github.com/ayxos/social-rehub">GitHub &#8599;</a></h2>
-            <p class="lead">A Chrome extension that measures your social-media addiction — a gentle nudge to reclaim your attention.<br>Code available on <a target="_blank" href="https://github.com/ayxos/social-rehub">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="social-rehub" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg16" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0655b"/><stop offset="1" stop-color="#cf433a"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg16)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="166" y="84" width="68" height="112" rx="12"/><line x1="166" y1="104" x2="234" y2="104"/><line x1="166" y1="176" x2="234" y2="176"/><line x1="186" y1="120" x2="214" y2="120"/><line x1="186" y1="160" x2="214" y2="160"/><path d="M188 122 h24 l-12 16 z" fill="#fff" stroke="none"/><path d="M188 158 h24 l-12 -16 z" fill="#fff" stroke="none"/></g></svg></div>
-        </div>
-      </div>
-    </div>
-<footer>
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -1408,6 +1449,26 @@
     if(t){ e.preventDefault(); setView(t.getAttribute("data-v")); }
   });
   setView("modern");
+})();
+
+/* ============ GAME-DEV REEL (click to load YouTube) ============ */
+(function(){
+  "use strict";
+  var vids = document.querySelectorAll(".vid[data-yt]");
+  for(var i=0;i<vids.length;i++){
+    (function(v){
+      v.addEventListener("click", function(){
+        var id = v.getAttribute("data-yt");
+        var f = document.createElement("iframe");
+        f.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
+        f.title = v.getAttribute("aria-label") || "Video";
+        f.setAttribute("allow", "autoplay; encrypted-media; fullscreen; picture-in-picture");
+        f.setAttribute("allowfullscreen", "");
+        v.innerHTML = "";
+        v.appendChild(f);
+      }, {once:true});
+    })(vids[i]);
+  }
 })();
 </script>
 </body>
