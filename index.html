@@ -1,246 +1,1094 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>M.A.P.S Portfolio</title>
-    <link rel="stylesheet" href="public/css/styl.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-  </head>
-  <body>
-    <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">M.A.P.S</a>
-        </div>
-        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="marcopajaresCV.pdf">My CV</a></li>
-            <li><a href="http://ayxos.com/">Blog</a></li>
-            <li><a href="#about_me">About Me</a></li>
-          </ul>
-        </div>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marco A. Pajares Silva — Head of Core Development</title>
+<meta name="description" content="Marco A. Pajares Silva — developer portfolio. From a game-building kid in Madrid to Head of Core Development in Hamburg.">
+<meta name="author" content="Marco A. Pajares Silva">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0e1219" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#dfe6ee" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marco A. Pajares Silva — Head of Core Development">
+<meta property="og:description" content="From a game-building kid in Madrid to Head of Core Development in Hamburg. A Minecraft-inspired developer CV.">
+<meta property="og:url" content="https://ayxos.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%E2%9B%8F%EF%B8%8F</text></svg>">
+<style>
+  /* minimal reset (previously supplied by the artifact host) */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  img,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    /* neutrals — light "day" (base) — cool stone with a faint diamond bias */
+    --ground:#dfe6ee;
+    --ground-2:#e9eef4;
+    --stone:#ffffff;
+    --stone-2:#f1f5f9;
+    --hi:#ffffff;        /* bevel light edge */
+    --lo:#b7c4d3;        /* bevel dark edge */
+    --ink:#141d28;
+    --ink-dim:#53667b;
+    --line:rgba(18,32,50,.12);
+    /* material accents (day-tuned for contrast) */
+    --diamond:#0d8f85;
+    --diamond-2:#0aa89b;
+    --gold:#b3820a;
+    --gold-2:#d09a12;
+    --grass:#3d8b28;
+    --redstone:#c53a30;
+    --glow:rgba(13,143,133,.16);
+    /* fonts */
+    --mono:"JetBrains Mono","Cascadia Code",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --maxw:1080px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#0e1219;
+      --ground-2:#131924;
+      --stone:#19212d;
+      --stone-2:#202b3a;
+      --hi:#2b3a4e;
+      --lo:#080b10;
+      --ink:#e9eff6;
+      --ink-dim:#94a6bb;
+      --line:rgba(255,255,255,.08);
+      --diamond:#4fe3d6;
+      --diamond-2:#7ff0e6;
+      --gold:#ffcf4d;
+      --gold-2:#ffe08a;
+      --grass:#74c94f;
+      --redstone:#f0655b;
+      --glow:rgba(79,227,214,.16);
+    }
+  }
+  /* explicit theme overrides (viewer toggle) must win both ways */
+  :root[data-theme="light"]{
+    --ground:#dfe6ee;--ground-2:#e9eef4;--stone:#ffffff;--stone-2:#f1f5f9;
+    --hi:#ffffff;--lo:#b7c4d3;--ink:#141d28;--ink-dim:#53667b;--line:rgba(18,32,50,.12);
+    --diamond:#0d8f85;--diamond-2:#0aa89b;--gold:#b3820a;--gold-2:#d09a12;
+    --grass:#3d8b28;--redstone:#c53a30;--glow:rgba(13,143,133,.16);
+  }
+  :root[data-theme="dark"]{
+    --ground:#0e1219;--ground-2:#131924;--stone:#19212d;--stone-2:#202b3a;
+    --hi:#2b3a4e;--lo:#080b10;--ink:#e9eff6;--ink-dim:#94a6bb;--line:rgba(255,255,255,.08);
+    --diamond:#4fe3d6;--diamond-2:#7ff0e6;--gold:#ffcf4d;--gold-2:#ffe08a;
+    --grass:#74c94f;--redstone:#f0655b;--glow:rgba(79,227,214,.16);
+  }
+
+  /* ============ BASE ============ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0}
+  .page{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--ground);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, var(--glow), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 23px, var(--line) 23px 24px),
+      repeating-linear-gradient(90deg, transparent 0 23px, var(--line) 23px 24px);
+    background-attachment:fixed;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    transition:background-color .4s ease,color .4s ease;
+  }
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+  section{padding-block:clamp(52px,8vw,104px)}
+  a{color:inherit}
+  h1,h2,h3{margin:0;text-wrap:balance;font-family:var(--mono);font-weight:800;letter-spacing:.02em}
+  p{margin:0}
+
+  .eyebrow{
+    font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--diamond);
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:11px;height:11px;background:var(--diamond);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.45),inset -2px -2px 0 rgba(0,0,0,.4)}
+  .sec-title{font-size:clamp(1.5rem,3.6vw,2.35rem);margin-top:14px;text-transform:uppercase}
+  .sec-lead{color:var(--ink-dim);max-width:60ch;margin-top:14px;font-size:1.02rem}
+
+  /* ============ BLOCK / BEVEL PRIMITIVES ============ */
+  .block{
+    background:var(--stone);
+    box-shadow:inset 3px 3px 0 var(--hi), inset -3px -3px 0 var(--lo), 0 10px 0 -3px rgba(0,0,0,.28);
+    position:relative;
+  }
+  .btn{
+    font-family:var(--mono);font-weight:700;font-size:.82rem;letter-spacing:.04em;
+    text-decoration:none;text-transform:uppercase;color:var(--ink);
+    background:var(--stone-2);padding:13px 18px;display:inline-flex;align-items:center;gap:10px;
+    box-shadow:inset 3px 3px 0 var(--hi), inset -3px -3px 0 var(--lo), 0 5px 0 0 rgba(0,0,0,.35);
+    transform:translateY(0);transition:transform .08s ease, box-shadow .08s ease, background-color .2s;
+    cursor:pointer;border:0;
+  }
+  .btn:hover{background:var(--stone)}
+  .btn:active{transform:translateY(5px);box-shadow:inset 3px 3px 0 var(--lo), inset -3px -3px 0 var(--hi), 0 0 0 0 rgba(0,0,0,.35)}
+  .btn--primary{color:#04201d;background:var(--diamond)}
+  .btn--primary:hover{background:var(--diamond-2)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .dot{width:9px;height:9px;flex:0 0 auto;box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -2px -2px 0 rgba(0,0,0,.4)}
+
+  /* ============ TOP HUD BAR ============ */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--ground) 86%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar__in{max-width:var(--maxw);margin-inline:auto;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-weight:800;letter-spacing:.05em}
+  .brand__cube{width:26px;height:26px;background:var(--grass);
+    box-shadow:inset 3px 3px 0 rgba(255,255,255,.35),inset -3px -3px 0 rgba(0,0,0,.4);
+    display:grid;place-items:center;color:#0a2506;font-size:.7rem;font-weight:900}
+  .brand small{color:var(--ink-dim);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+  .topbar__nav{display:flex;align-items:center;gap:6px}
+  .topbar__nav a{display:none}
+  @media(min-width:820px){.topbar__nav a{display:inline-flex}}
+  .navlink{font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-dim);text-decoration:none;padding:8px 12px}
+  .navlink:hover{color:var(--diamond)}
+  .navlink--ext{color:var(--gold)}
+  .navlink--ext:hover{color:var(--gold-2)}
+  .toggle{width:46px;height:38px;display:grid;place-items:center;background:var(--stone-2);cursor:pointer;border:0;
+    box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo),0 4px 0 0 rgba(0,0,0,.3);
+    color:var(--gold);font-family:var(--mono);font-size:1rem;font-weight:900}
+  .toggle:active{transform:translateY(4px);box-shadow:inset 2px 2px 0 var(--lo),inset -2px -2px 0 var(--hi)}
+
+  /* ============ HERO ============ */
+  .hero{padding-top:clamp(30px,5vw,56px);position:relative}
+  #hero-canvas{display:block;width:100%;height:clamp(150px,26vw,270px);image-rendering:pixelated}
+  .hero__name{font-family:var(--mono);font-weight:800;font-size:clamp(1.05rem,3vw,1.5rem);
+    letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+  .hero__role{color:var(--diamond);font-family:var(--mono);font-weight:700;letter-spacing:.05em;margin-top:10px;font-size:clamp(.95rem,2.2vw,1.15rem)}
+  .hero__role b{color:var(--gold)}
+  .hero__tag{color:var(--ink-dim);max-width:64ch;margin-top:18px;font-size:1.08rem}
+  .hero__loc{display:inline-flex;gap:9px;align-items:center;font-family:var(--mono);font-size:.76rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-top:20px}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+  /* ============ STATS / HUD ============ */
+  .xpbar{margin-top:10px}
+  .xpbar__label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:9px}
+  .xpbar__label b{color:var(--gold)}
+  .xpbar__track{height:20px;background:var(--stone);box-shadow:inset 3px 3px 0 var(--lo),inset -3px -3px 0 var(--hi)}
+  .xpbar__fill{height:100%;width:100%;background:
+    repeating-linear-gradient(90deg,var(--gold) 0 10px, var(--gold-2) 10px 20px);
+    box-shadow:inset 0 3px 0 rgba(255,255,255,.35),inset 0 -3px 0 rgba(0,0,0,.25);
+    transform-origin:left;}
+  .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+  @media(min-width:720px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+  .stat{padding:20px 18px;text-align:left}
+  .stat__num{font-family:var(--mono);font-weight:800;font-size:clamp(1.5rem,4vw,2.15rem);
+    line-height:1;color:var(--diamond);font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:6px}
+  .stat__num small{font-size:.9rem;color:var(--ink-dim)}
+  .stat__lbl{margin-top:11px;color:var(--ink-dim);font-size:.85rem;line-height:1.45}
+  .stat:nth-child(2) .stat__num{color:var(--gold)}
+  .stat:nth-child(3) .stat__num{color:var(--grass)}
+  .stat:nth-child(4) .stat__num{color:var(--redstone)}
+
+  .hotbar-wrap{margin-top:30px}
+  .hotbar-title{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
+  .hotbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  @media(min-width:560px){.hotbar{grid-template-columns:repeat(9,1fr)}}
+  .slot{aspect-ratio:1;position:relative;background:var(--stone-2);display:grid;place-items:center;
+    box-shadow:inset 3px 3px 0 var(--lo),inset -3px -3px 0 var(--hi);cursor:default;transition:transform .12s ease}
+  .slot:hover{transform:translateY(-4px)}
+  .slot__key{position:absolute;top:3px;left:4px;font-family:var(--mono);font-size:.62rem;color:var(--ink-dim);opacity:.7}
+  .slot__ic{width:56%;height:56%;box-shadow:inset 3px 3px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35)}
+  .slot__name{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);white-space:nowrap;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:var(--ink);background:var(--stone);
+    padding:3px 7px;opacity:0;pointer-events:none;transition:opacity .12s;box-shadow:0 3px 0 rgba(0,0,0,.3);z-index:5}
+  .slot:hover .slot__name{opacity:1}
+
+  /* ============ JOURNEY / TIMELINE ============ */
+  .journey{background:var(--ground-2)}
+  .track{margin-top:44px;position:relative;display:flex;flex-direction:column;gap:26px}
+  .track::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:4px;
+    background:repeating-linear-gradient(180deg,var(--lo) 0 8px, transparent 8px 16px)}
+  @media(min-width:760px){.track::before{left:23px}}
+  .lvl{position:relative;padding-left:52px}
+  @media(min-width:760px){.lvl{padding-left:70px}}
+  .lvl__node{position:absolute;left:0;top:6px;width:34px;height:34px;display:grid;place-items:center;
+    box-shadow:inset 3px 3px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.4);z-index:2;
+    font-family:var(--mono);font-weight:900;font-size:.7rem;color:#06130c}
+  .lvl__panel{padding:22px 22px 24px}
+  .lvl__meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+  .lvl__stage{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .lvl__when{font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);margin-left:auto;font-variant-numeric:tabular-nums}
+  .lvl__org{font-size:clamp(1.15rem,2.6vw,1.5rem);margin-top:8px}
+  .lvl__org span{color:var(--ink-dim);font-weight:700;font-size:.82em}
+  .lvl__place{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--diamond);margin-top:6px;display:inline-flex;gap:8px;align-items:center}
+  .lvl__body{color:var(--ink-dim);margin-top:14px;font-size:.98rem}
+  .roles{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+  .role{display:flex;gap:12px;align-items:baseline;padding-left:2px}
+  .role__t{font-family:var(--mono);font-weight:700;font-size:.9rem;color:var(--ink)}
+  .role__d{font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  .adv-list{margin-top:18px;display:flex;flex-direction:column;gap:9px}
+  .adv{display:flex;align-items:center;gap:13px;background:var(--stone-2);padding:11px 14px;
+    box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo)}
+  .adv__ic{width:26px;height:26px;flex:0 0 auto;box-shadow:inset 3px 3px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.4)}
+  .adv__k{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .adv__t{display:block;font-size:.9rem;color:var(--ink);margin-top:2px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+  .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--ink-dim);
+    background:var(--ground);padding:5px 9px;box-shadow:inset 2px 2px 0 var(--lo),inset -2px -2px 0 var(--hi)}
+
+  /* ============ PROJECTS / INVENTORY ============ */
+  .inv{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:40px}
+  .item{padding:20px;display:flex;flex-direction:column;gap:12px;transition:transform .14s ease}
+  .item:hover{transform:translateY(-5px)}
+  .item--rare{box-shadow:inset 3px 3px 0 var(--gold), inset -3px -3px 0 var(--lo), 0 10px 0 -3px rgba(0,0,0,.28)}
+  .item__top{display:flex;align-items:center;gap:12px}
+  .item__ic{width:36px;height:36px;flex:0 0 auto;box-shadow:inset 3px 3px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.4)}
+  .item__name{font-family:var(--mono);font-weight:800;font-size:1rem;letter-spacing:.01em}
+  .item__star{margin-left:auto;font-family:var(--mono);font-size:.78rem;color:var(--gold);font-weight:700;white-space:nowrap}
+  .item__new{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;font-weight:800;color:#04201d;background:var(--diamond);padding:2px 6px;margin-left:8px}
+  .item__desc{color:var(--ink-dim);font-size:.9rem;flex:1}
+  .item__tags{display:flex;flex-wrap:wrap;gap:6px}
+  .item__t{font-family:var(--mono);font-size:.64rem;color:var(--ink-dim);opacity:.85}
+  .item__t::before{content:"▪ ";color:var(--diamond)}
+  .item__links{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+  .chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+    color:var(--diamond);padding:6px 10px;background:var(--stone-2);box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo)}
+  .chip:hover{color:var(--ink);background:var(--diamond)}
+  .chest-note{margin-top:20px;font-family:var(--mono);font-size:.8rem;color:var(--ink-dim);display:flex;gap:12px;align-items:center}
+  .chest-note .lock{width:22px;height:22px;background:var(--stone-2);box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo);display:grid;place-items:center;color:var(--gold);font-weight:900}
+
+  /* ============ SKILLS ============ */
+  .skills{background:var(--ground-2)}
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:40px}
+  .skb{padding:20px}
+  .skb__h{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--diamond);display:flex;align-items:center;gap:10px}
+  .skb__h .dot{background:var(--diamond)}
+  .skb__list{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .skb__list span{font-family:var(--mono);font-size:.74rem;color:var(--ink);
+    background:var(--stone-2);padding:6px 9px;box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo)}
+
+  /* ============ WORDS / RECOMMENDATIONS + LANGS ============ */
+  .cols{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
+  @media(min-width:840px){.cols{grid-template-columns:1fr 1fr}}
+  .sign{padding:24px;position:relative}
+  .sign::before{content:"“";position:absolute;top:8px;left:16px;font-family:var(--mono);font-size:3rem;color:var(--gold);opacity:.5;line-height:1}
+  .sign__q{font-size:1rem;color:var(--ink);padding-top:22px;font-style:italic}
+  .sign__by{margin-top:16px;font-family:var(--mono);font-size:.76rem;color:var(--ink-dim)}
+  .sign__by b{color:var(--diamond);font-weight:700}
+  .langs{margin-top:16px}
+  .lang-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .lang-row:last-child{border-bottom:0}
+  .lang-name{font-family:var(--mono);font-weight:700;min-width:96px}
+  .pips{display:flex;gap:5px}
+  .pip{width:15px;height:15px;background:var(--lo);box-shadow:inset 2px 2px 0 rgba(255,255,255,.15)}
+  .pip.on{background:var(--grass);box-shadow:inset 2px 2px 0 rgba(255,255,255,.4),inset -2px -2px 0 rgba(0,0,0,.35)}
+  .lang-lvl{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.08em}
+
+  /* ============ CONTACT ============ */
+  .contact{text-align:center}
+  .contact .sec-title{margin-inline:auto}
+  .contact .sec-lead{margin-inline:auto}
+  .contact__cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+  footer{border-top:1px solid var(--line);padding:26px 20px;text-align:center;
+    font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);letter-spacing:.06em}
+  footer b{color:var(--grass)}
+
+  /* ============ REVEAL ============ */
+  .rise{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+  .rise.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .rise{opacity:1;transform:none;transition:none}
+    .slot,.item,.btn{transition:none}
+  }
+
+  /* ============ WALKER ============ */
+  #walker{position:fixed;left:0;bottom:0;width:100%;height:220px;z-index:40;pointer-events:none;image-rendering:pixelated}
+  .page{padding-bottom:60px}
+</style>
+
+<div class="page">
+
+  <!-- ===== TOP HUD ===== -->
+  <div class="topbar">
+    <div class="topbar__in">
+      <div class="brand">
+        <span class="brand__cube">M</span>
+        <span>MARCO<br><small>the code trotter</small></span>
       </div>
-    </nav>
-    <div class="intro-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="intro-message">
-              <h1>M.A.P.S</h1>
-              <h3>Check out my projects!</h3>
-              <hr class="intro-divider">
-              <ul class="list-inline intro-social-buttons">
-                <li><a href="https://twitter.com/ayxos" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i><span class="network-name">Twitter</span></a></li>
-                <li><a href="https://github.com/ayxos" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i><span class="network-name">Github</span></a></li>
-                <li><a href="https://www.linkedin.com/pub/marco-antonio-pajares/3a/457/52" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i><span class="network-name">Linkedin</span></a></li>
-              </ul>
+      <nav class="topbar__nav">
+        <a class="navlink" href="#journey">Journey</a>
+        <a class="navlink" href="#projects">Builds</a>
+        <a class="navlink" href="#skills">Toolkit</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <a class="navlink navlink--ext" href="https://ayxos.github.io/classic.html" target="_blank" rel="noopener" title="My previous, open-source portfolio">Classic ↗</a>
+        <button class="toggle" id="theme-toggle" aria-label="Toggle day / night" title="Day / Night">☀</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <h1 class="hero__name">Marco A. Pajares Silva</h1>
+      <p class="hero__role"><b>Head of Core Development</b> @ Gravite</p>
+      <p class="hero__tag">A kid from Madrid who cared more about <em>building</em> worlds than just playing in them — shipped a Kinect-controlled 3D game as his final thesis, then spent the next 13 years turning that same instinct into production software. Today I lead the engineering core of an ad exchange in Hamburg that processes <strong>billions of requests a month</strong>.</p>
+      <p class="hero__loc"><span class="dot" style="background:var(--grass)"></span> Madrid, ES → Hamburg, DE &nbsp;·&nbsp; JavaScript · Node.js · React · PHP</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#journey">▶ Start the run</a>
+        <a class="btn" href="https://github.com/ayxos" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/marco-a-pajares-silva-0524573a/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="http://ayxos.github.io/" target="_blank" rel="noopener">ayxos.github.io</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS / HUD ===== -->
+  <section class="stats" aria-label="Stats">
+    <div class="wrap">
+      <div class="xpbar rise">
+        <div class="xpbar__label"><span>XP · Experience Bar</span><span><b>Lv. 13 — Head of Core Development</b></span></div>
+        <div class="xpbar__track"><div class="xpbar__fill" id="xpfill"></div></div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat block rise"><div class="stat__num">13<small>+ yrs</small></div><div class="stat__lbl">Shipping production code since 2013</div></div>
+        <div class="stat block rise"><div class="stat__num">Bn+<small>/mo</small></div><div class="stat__lbl">Ad requests flowing through the exchange I help run</div></div>
+        <div class="stat block rise"><div class="stat__num">~20</div><div class="stat__lbl">Engineers in the international org I lead</div></div>
+        <div class="stat block rise"><div class="stat__num">10<small>/10</small></div><div class="stat__lbl">Grade on my 3D game-dev thesis at UC3M</div></div>
+      </div>
+
+      <div class="hotbar-wrap rise">
+        <div class="hotbar-title">Core stack · hotbar</div>
+        <div class="hotbar" id="hotbar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JOURNEY ===== -->
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <span class="eyebrow">The world · seed: Madrid 1990s</span>
+      <h2 class="sec-title">The run so far</h2>
+      <p class="sec-lead">Every good save file starts at spawn and works its way toward the stronghold. Here's mine — from a bedroom in Madrid to leading core development in Hamburg, one biome at a time.</p>
+
+      <div class="track" id="track">
+
+        <!-- SPAWN -->
+        <article class="lvl rise" data-tag="Madrid">
+          <div class="lvl__node" style="background:var(--grass)">◱</div>
+          <div class="lvl__panel block">
+            <div class="lvl__meta"><span class="lvl__stage">Spawn point</span><span class="lvl__when">1990s → 2008</span></div>
+            <h3 class="lvl__org">A kid in Madrid</h3>
+            <div class="lvl__place"><span class="dot" style="background:var(--grass)"></span> Madrid, Spain</div>
+            <p class="lvl__body">Grew up more interested in <em>how</em> the game worked than in beating it — modding, tinkering, building things out of blocks long before it was a career. That itch to construct systems from scratch never left. It just found bigger canvases.</p>
+          </div>
+        </article>
+
+        <!-- UNIVERSITY -->
+        <article class="lvl rise" data-tag="UC3M">
+          <div class="lvl__node" style="background:var(--diamond)">✦</div>
+          <div class="lvl__panel block">
+            <div class="lvl__meta"><span class="lvl__stage">Crafting table</span><span class="lvl__when">2008 — 2013</span></div>
+            <h3 class="lvl__org">Universidad Carlos III de Madrid <span>· Computer Engineering</span></h3>
+            <div class="lvl__place"><span class="dot" style="background:var(--diamond)"></span> Leganés, Madrid</div>
+            <p class="lvl__body">Ingeniería Informática (Computer Engineering). Spent a 2011 summer at the Universidad de Alicante on .NET mobile development, and co-ran <b>T3chFest</b> — a student tech conference proving you don't need to fly to Stanford to build and innovate.</p>
+            <div class="adv-list">
+              <div class="adv"><span class="adv__ic" style="background:var(--diamond)"></span><span><span class="adv__k">Advancement made!</span><span class="adv__t">Final thesis: a 3D multiplayer paintball game in UDK — Blender, SketchUp &amp; 3ds Max, controlled with a Kinect (FAAST) and a Wiimote (GlovePie). Graded <b>10 / 10</b>.</span></span></div>
+              <div class="adv"><span class="adv__ic" style="background:var(--redstone)"></span><span><span class="adv__k">Advancement made!</span><span class="adv__t">Built an Arduino robot with proximity sensing and remote control — hardware for the fun of it.</span></span></div>
             </div>
+            <div class="tags"><span class="tag">UDK</span><span class="tag">Blender</span><span class="tag">3ds Max</span><span class="tag">Kinect / FAAST</span><span class="tag">C++</span><span class="tag">Arduino</span></div>
           </div>
+        </article>
+
+        <!-- PORTZAR -->
+        <article class="lvl rise" data-tag="Portzar">
+          <div class="lvl__node" style="background:var(--gold)">1</div>
+          <div class="lvl__panel block">
+            <div class="lvl__meta"><span class="lvl__stage">First shelter</span><span class="lvl__when">Feb 2013 — Mar 2014</span></div>
+            <h3 class="lvl__org">Portzar <span>· Front-End Developer</span></h3>
+            <div class="lvl__place"><span class="dot" style="background:var(--grass)"></span> Madrid, Spain</div>
+            <p class="lvl__body">The first real job — the shelter you throw up before nightfall. Built the brand and the whole customer-facing web interface, including a drag-and-drop builder, on an early Node + Backbone.Marionette stack.</p>
+            <div class="tags"><span class="tag">Backbone.Marionette</span><span class="tag">Node / Express</span><span class="tag">Jade</span><span class="tag">Stylus</span><span class="tag">Grunt</span><span class="tag">Vagrant</span><span class="tag">jQuery</span></div>
+          </div>
+        </article>
+
+        <!-- BUONGIORNO -->
+        <article class="lvl rise" data-tag="Buongiorno">
+          <div class="lvl__node" style="background:var(--gold)">2</div>
+          <div class="lvl__panel block">
+            <div class="lvl__meta"><span class="lvl__stage">Party up</span><span class="lvl__when">Apr 2014 — Oct 2014</span></div>
+            <h3 class="lvl__org">Buongiorno <span>· NTT DOCOMO Group · Front-End Developer</span></h3>
+            <div class="lvl__place"><span class="dot" style="background:var(--grass)"></span> Madrid · Florence · Milan</div>
+            <p class="lvl__body">Refactored internal tools onto a clean Backbone architecture — then taught the front- and back-end teams across Madrid, Florence and Milan how to work with Backbone, Angular, Node and Git. First taste of levelling up the people around me, not just the code.</p>
+            <div class="tags"><span class="tag">Backbone</span><span class="tag">AngularJS</span><span class="tag">Node</span><span class="tag">Git workflows</span><span class="tag">TDD · Jasmine/Karma</span><span class="tag">Mentoring</span></div>
+          </div>
+        </article>
+
+        <!-- SMAATO -->
+        <article class="lvl rise" data-tag="Smaato">
+          <div class="lvl__node" style="background:var(--diamond)">⇧</div>
+          <div class="lvl__panel block">
+            <div class="lvl__meta"><span class="lvl__stage">The expedition north</span><span class="lvl__when">Oct 2014 — Jul 2018</span></div>
+            <h3 class="lvl__org">Smaato <span>· global mobile RTB ad exchange</span></h3>
+            <div class="lvl__place"><span class="dot" style="background:var(--diamond)"></span> Hamburg, Germany</div>
+            <p class="lvl__body">Packed up and crossed the map to a new biome: Germany. Joined one of the leading global mobile ad exchanges and grew across four roles in four years — from the SPA platform to the ad-serving tag itself.</p>
+            <div class="roles">
+              <div class="role"><span class="dot" style="background:var(--grass)"></span><span class="role__t">Frontend Developer</span><span class="role__d">Oct 2014 — Feb 2016</span></div>
+              <div class="role"><span class="dot" style="background:var(--grass)"></span><span class="role__t">Fullstack Developer</span><span class="role__d">Feb 2016 — Dec 2016</span></div>
+              <div class="role"><span class="dot" style="background:var(--grass)"></span><span class="role__t">JS Software Developer — Ad Tag</span><span class="role__d">Dec 2016 — Jul 2018</span></div>
+              <div class="role"><span class="dot" style="background:var(--grass)"></span><span class="role__t">JS Software Developer — GDPR / CMP</span><span class="role__d">Dec 2017 — Jul 2018</span></div>
+            </div>
+            <div class="adv-list">
+              <div class="adv"><span class="adv__ic" style="background:var(--gold)"></span><span><span class="adv__k">Advancement made!</span><span class="adv__t">Rewrote the Ad Tag in ES6 modules — shrank the core from <b>72&nbsp;kB → 12&nbsp;kB</b>, with dynamic modules and AWS blue/green deploys.</span></span></div>
+              <div class="adv"><span class="adv__ic" style="background:var(--diamond)"></span><span><span class="adv__k">Advancement made!</span><span class="adv__t">Built a Consent Management Provider for GDPR and contributed to the IAB's official CMP spec.</span></span></div>
+            </div>
+            <div class="tags"><span class="tag">React</span><span class="tag">AngularJS</span><span class="tag">ES6 modules</span><span class="tag">MRAID / VAST</span><span class="tag">Druid</span><span class="tag">Webpack</span><span class="tag">AWS blue/green</span><span class="tag">Protractor · Jenkins · Docker</span></div>
+          </div>
+        </article>
+
+        <!-- GRAVITE -->
+        <article class="lvl rise" data-tag="Gravite">
+          <div class="lvl__node" style="background:var(--redstone)">★</div>
+          <div class="lvl__panel block item--rare">
+            <div class="lvl__meta"><span class="lvl__stage">The stronghold · current</span><span class="lvl__when">Sep 2018 — now</span></div>
+            <h3 class="lvl__org">Gravite <span>· mobile-first ad exchange · Aonic Group</span></h3>
+            <div class="lvl__place"><span class="dot" style="background:var(--redstone)"></span> Hamburg, Germany</div>
+            <p class="lvl__body">Nearly 8 years and three levels deep at Gravite — an OpenRTB ad exchange connecting DSPs and SSPs in real time across billions of requests a month. Grew from building dashboards to owning the whole technology core.</p>
+            <div class="roles">
+              <div class="role"><span class="dot" style="background:var(--diamond)"></span><span class="role__t">Senior Software Developer</span><span class="role__d">Sep 2018 — Jan 2021</span></div>
+              <div class="role"><span class="dot" style="background:var(--gold)"></span><span class="role__t">Lead Developer</span><span class="role__d">Jan 2021 — Jul 2025</span></div>
+              <div class="role"><span class="dot" style="background:var(--redstone)"></span><span class="role__t">Head of Core Development</span><span class="role__d">Jul 2025 — now</span></div>
+            </div>
+            <div class="adv-list">
+              <div class="adv"><span class="adv__ic" style="background:var(--gold)"></span><span><span class="adv__k">Advancement made!</span><span class="adv__t">Built the real-time <b>rule-delivery</b> system — live config updates pushed across the whole platform.</span></span></div>
+              <div class="adv"><span class="adv__ic" style="background:var(--diamond)"></span><span><span class="adv__k">Advancement made!</span><span class="adv__t">Designed a <b>pricing-prediction</b> engine that estimates bids from historical performance data.</span></span></div>
+              <div class="adv"><span class="adv__ic" style="background:var(--redstone)"></span><span><span class="adv__k">Boss level reached!</span><span class="adv__t">Now lead a multicultural engineering org across PHP microservices, Node.js, React and a MariaDB / ClickHouse / MongoDB / Elasticsearch data backbone.</span></span></div>
+            </div>
+            <div class="tags"><span class="tag">PHP microservices</span><span class="tag">Node.js</span><span class="tag">React</span><span class="tag">ClickHouse</span><span class="tag">Elasticsearch</span><span class="tag">MariaDB · MongoDB</span><span class="tag">OpenRTB</span><span class="tag">Docker · Nginx</span><span class="tag">Observability</span><span class="tag">Leadership</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <div class="wrap">
+      <span class="eyebrow">Inventory · open a chest</span>
+      <h2 class="sec-title">Things I've built</h2>
+      <p class="sec-lead">A sampler from ~57 public repos and a decade of side quests — libraries, games, tools and experiments.</p>
+
+      <div class="inv" id="inv"></div>
+
+      <div class="chest-note"><span class="lock">▮</span> Plenty more sealed in private repos — the production stuff at Gravite lives behind the wall.</div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <span class="eyebrow">Toolkit · crafting recipes</span>
+      <h2 class="sec-title">The full toolkit</h2>
+      <p class="sec-lead">Thirteen years of accumulated tools — from vanilla JS in a browser to real-time data pipelines and the people practices to ship them.</p>
+      <div class="skill-grid" id="skills-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== WORDS + LANGS ===== -->
+  <section id="words">
+    <div class="wrap">
+      <span class="eyebrow">Signs left by fellow players</span>
+      <h2 class="sec-title">What people say</h2>
+      <div class="cols">
+        <div class="sign block rise">
+          <p class="sign__q">Creative, result-oriented, responsible and technically sound — always ready to put all his energy into getting the job done, with exceptional troubleshooting and analytical skill. A great asset to any company.</p>
+          <p class="sign__by"><b>Romeo</b> — Digital Architect &amp; Creative Director · directly supervised Marco at Portzar</p>
+        </div>
+        <div class="sign block rise">
+          <p class="sign__q">One of the best front-end developers I could work with. Extensive knowledge of the latest JavaScript technologies across different environments, and he brings dynamism to every project. A person I've learned a lot from.</p>
+          <p class="sign__by"><b>Pedro Villatoro Navarro</b> — CEO, AD4 Octógono · teammate</p>
+        </div>
+      </div>
+
+      <div class="cols" style="margin-top:16px">
+        <div class="block rise" style="padding:24px">
+          <div class="skb__h"><span class="dot"></span> Languages</div>
+          <div class="langs">
+            <div class="lang-row"><span class="lang-name">Spanish</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i></span><span class="lang-lvl">Native</span></div>
+            <div class="lang-row"><span class="lang-name">English</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i></span><span class="lang-lvl">Professional</span></div>
+            <div class="lang-row"><span class="lang-name">German</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span><span class="lang-lvl">Working</span></div>
+          </div>
+        </div>
+        <div class="block rise" style="padding:24px">
+          <div class="skb__h"><span class="dot" style="background:var(--gold)"></span> Beyond the code</div>
+          <p style="color:var(--ink-dim);margin-top:14px;font-size:.95rem">Former game developer, newbie entrepreneur, and an incurable optimist about the JavaScript world. I care about clean architecture, fast reliable deploys, and — above all — building an inclusive team where every engineer can thrive. Diversity of language, background and perspective is the core strength of the org I lead.</p>
         </div>
       </div>
     </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">Check PNG background<br><a target='_blank' href="https://ayxos.github.io/checkpng/">Checkbg.com</a></h2>
-            <p class="lead">Online tool to check if the background is transparent or not</p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><img src="http://i66.tinypic.com/flczua.png" alt="" class="img-responsive"></div>
-        </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="eyebrow" style="justify-content:center">Save &amp; continue</span>
+      <h2 class="sec-title">Let's build something</h2>
+      <p class="sec-lead">Open to interesting problems, good teams and the occasional side quest. The fastest way to reach me:</p>
+      <div class="contact__cta">
+        <a class="btn btn--primary" href="mailto:marco.pajares@gravite.net">✉ marco.pajares@gravite.net</a>
+        <a class="btn" href="https://github.com/ayxos" target="_blank" rel="noopener">GitHub · ayxos</a>
+        <a class="btn" href="https://www.linkedin.com/in/marco-a-pajares-silva-0524573a/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://twitter.com/thecodetrotter" target="_blank" rel="noopener">X · @thecodetrotter</a>
+        <a class="btn" href="https://ayxos.github.io/classic.html" target="_blank" rel="noopener">◱ Classic portfolio ↗</a>
       </div>
     </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">Interpretame.com Forum<br><a target='_blank' href="https://forums.interpretame.com/">forums.interpretame</a></h2>
-            <p class="lead">A self-hosted forum for interpretame.com using NodeBB</p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="https://preview.ibb.co/h5fZSa/Captura_de_pantalla_2017_06_05_a_las_23_51_00.png" alt="" style="border: solid 1px gray;" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">Interpretame.coom<br><a target='_blank' href="https://interpretame.com/">Interpretame.com</a></h2>
-            <p class="lead">the perfect all-in-box tool for interpreters using React.js, Webpack and Node</p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><img src="https://forums.interpretame.com/assets/uploads/files/1496250346646-lan.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">React Cellar<br><a target='_blank' href="https://react-cellar.herokuapp.com/">react-cellar</a></h2>
-            <p class="lead">I replicated Christophe Coenraets' Wine-cellar example with React to help whoever is interested in learning how this new technology works, giving the user the chance to compare between different environments.<br>Code available on<a target="_blank" href="https://github.com/ayxos/react-cellar">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="https://raw.githubusercontent.com/ayxos/react-cellar/master/reactCellar.gif" alt="" style="border: solid 1px gray;" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">Socket Game IO<br><a target='_blank' href="https://zombi.herokuapp.com/">zombi</a></h2>
-            <p class="lead">a massive multiplayer game using Javascript & Websockets (socket.io)<br>Code available on<a target="_blank" href="https://github.com/ayxos/socketGameIO">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><img src="http://i59.tinypic.com/2j1vtjr.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">Html Editor online<br><a target='_blank' href="https://html-multieditor.herokuapp.com/">html-multieditor</a></h2>
-            <p class="lead">Html Editor is a simple tool to create your html code, mainly focus on interpreters who are translating a web page but also appropriate for Html content editors.<br>Code available on<a target="_blank" href="https://github.com/ayxos/Ghost-Markdown-Editor">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="http://i61.tinypic.com/2z6e8v6.png" alt="" style="border: solid 1px gray;" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">Wedding Template<br><a target='_blank' href="http://ayxos.com/creating-a-wedding-template-with-node-js/">http://ayxos.com/creating-a-wedding-template-with-node-js/</a></h2>
-            <p class="lead">A Node app that lets you create your own wedding page Frontend &#38; Backend configuring just one single file!<br>Code available on<a target="_blank" href="https://github.com/ayxos/wedding_node">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><img src="http://i58.tinypic.com/2v0ejpc.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">Backbone-notification<br><a target='_blank' href="http://ayxos.com/backbone-notification/">http://ayxos.com/backbone-notification/</a></h2>
-            <p class="lead">A simple Backbone lib that lets you create Bootstrap alert notification easily<br>Code available on<a target="_blank" href="https://github.com/ayxos/backbone-notification">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="http://i62.tinypic.com/14vikp1.png" alt="" style="border: solid 1px gray;" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">London BusStop Finder<br><a target='_blank' href="http://ayxos.com/londonBusFinder/">http://ayxos.com/londonBusFinder/</a></h2>
-            <p class="lead">A Node app that lets you find where are your closest busStop on London and list every Bus line and time left.<br>Code available on<a target="_blank" href="https://github.com/ayxos/LondonBusStopFinder">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><img src="public/img/dog.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">Backbone-wizard<br><a target='_blank' href="http://ayxos.com/backbone-wizard/">http://ayxos.com/backbone-wizard/</a></h2>
-            <p class="lead">A simple Backbone lib that lets you create dynamic wizards using AJAX or JSON<br>Code available on<a target="_blank" href="https://github.com/ayxos/backbone-wizard">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="http://i58.tinypic.com/wulzt4.png" alt="" style="border: solid 1px gray;" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">Frontend Workflow<br><a target='_blank' href="http://ayxos.com/workflow/">http://ayxos.com/workflow/</a></h2>
-            <p class="lead">A slides that show what i consider that frontend must work<br>Code available on<a target="_blank" href="https://github.com/ayxos/Frontend_workflow_slides">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6"><img src="public/img/ipad.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">Backbone DB storage<br>Backbone_Api</h2>
-            <p class="lead">Simple app to store data on a mongo database using Backbone<br>Code available on<a target="_blank" href="https://github.com/ayxos/Backboneplate_Require">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="public/img/Mac.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">FPS Game using UDK (UE 3.0)<br><a target='_blank' href="https://www.dropbox.com/s/2b2m8186ujjo4eu/TFG.pdf">https://www.dropbox.com/s/2b2m8186ujjo4eu/TFG.pdf</a></h2>
-            <p class="lead">A UDK game made using Blender, 3Dmax and sketchup.<br>Code available on<a target="_blank" href="https://github.com/ayxos/UDK-PaintballUC3M">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6">
-            <iframe width="100%" height="315" src="http://www.youtube.com/embed/wXhWU8UySsI" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-a">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-sm-6">
-            <h2 class="section-heading">Blog<br><a target='_blank' href="http://ayxos.com">http://ayxos.com</a></h2>
-            <p class="lead">A node ghost blog hosted on Heroku</p>
-          </div>
-          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><img src="public/img/blog.png" alt="" class="img-responsive"></div>
-        </div>
-      </div>
-    </div>
-    <div class="content-section-b">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
-            <h2 class="section-heading">Arduino robot<br><a target='_blank' href="https://github.com/ayxos/ArduinoRobot">https://github.com/ayxos/ArduinoRobot</a></h2>
-            <p class="lead">A roibot done with arduino controlled by remote control with proximity sensor<br>Code available on<a target="_blank" href="https://github.com/ayxos/ArduinoRobot">Github</a></p>
-          </div>
-          <div class="col-lg-5 col-sm-pull-6 col-sm-6">
-            <iframe width="100%" height="315" src="http://www.youtube.com/embed/A1anLQUxnzg" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="about_me" class="about">
-      <div class="container">
-        <div class="row">
-          <div style="margin:2%" class="col-lg-3"><img src="https://media.licdn.com/media/p/1/005/06a/25a/19d7f97.jpg" alt="" class="img-responsive"></div>
-          <div class="col-lg-6">Marco A. Pajares is a computer programmer, passionate about tech and JS world, newbie entrepreneur, former game developer, Carlos III former pupil and currently, Frontend developer at Smaato (Hamburg,Germany).
-            <ul class="list-inline banner-social-buttons">
-              <li><a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i><span class="network-name">Twitter</span></a></li>
-              <li><a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i><span class="network-name">Github</span></a></li>
-              <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i><span class="network-name">Linkedin</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="list-inline">
-              <li><a href="http://ayxos.com/">Blog</a></li>
-              <li class="footer-menu-divider">&#8901;</li>
-              <li><a href="#about_me">About Me</a></li>
-            </ul>
-            <p class="copyright text-muted small">Copyright &#169; M.A.P.S 2015. All Rights Reserved</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script type="text/javascript" src="public/js/output.min.js"></script>
-  </body>
+  </section>
+
+  <footer>Built block by block · Marco A. Pajares Silva · Madrid → Hamburg · <a href="https://ayxos.github.io/classic.html" style="color:var(--diamond);text-decoration:none">classic portfolio ↗</a> · <b>■</b> keep mining</footer>
+
+  <canvas id="walker" aria-hidden="true"></canvas>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var root = document.documentElement;
+
+  /* ---------- THEME (day / night) ---------- */
+  var toggle = document.getElementById("theme-toggle");
+  function sysDark(){ return window.matchMedia("(prefers-color-scheme: dark)").matches; }
+  function isDark(){ return root.dataset.theme ? root.dataset.theme === "dark" : sysDark(); }
+  function paintToggle(){ toggle.textContent = isDark() ? "☾" : "☀"; }
+  paintToggle();
+  toggle.addEventListener("click", function(){
+    root.dataset.theme = isDark() ? "light" : "dark";
+    paintToggle();
+    setTimeout(drawHero, 60); // recolor voxels for new theme
+  });
+
+  /* ---------- HOTBAR ---------- */
+  var STACK = [
+    ["JavaScript","#e9c93a"],["TypeScript","#3178c6"],["Node.js","#5aa24a"],
+    ["React","#4fd6e6"],["PHP","#8892c8"],["Docker","#3aa5e6"],
+    ["ClickHouse","#e6b23a"],["Elastic","#3ac47a"],["MongoDB","#5aa24a"]
+  ];
+  var hb = document.getElementById("hotbar");
+  STACK.forEach(function(s,i){
+    var slot = document.createElement("div");
+    slot.className = "slot";
+    slot.innerHTML = '<span class="slot__key">'+(i+1)+'</span>'+
+      '<span class="slot__ic" style="background:'+s[1]+'"></span>'+
+      '<span class="slot__name">'+s[0]+'</span>';
+    hb.appendChild(slot);
+  });
+
+  /* ---------- PROJECTS ---------- */
+  var PROJECTS = [
+    {n:"react-cellar",star:"★ 11",rare:true,c:"#4fd6e6",d:"A wine-cellar app rebuilt in React to help others learn the stack — end to end with TypeScript, MongoDB and Redux.",t:["TypeScript","MongoDB","Redux","Webpack"],links:[["Code","https://github.com/ayxos/react-cellar"]]},
+    {n:"backbone-wizard",star:"★ 11",rare:true,c:"#e9c93a",d:"A tidy, reusable multi-step wizard component library for Backbone.js.",t:["Backbone","JavaScript","RequireJS"],links:[["Code","https://github.com/ayxos/backbone-wizard"]]},
+    {n:"UC3M Paintball",star:"10/10",rare:true,c:"#f0655b",d:"The 3D multiplayer paintball game thesis — UDK engine, Kinect + Wiimote controls, day/night cycle, weather and AI.",t:["UDK","Blender","Kinect","3ds Max"],links:[["Code","https://github.com/0-maps/UDK-PaintballUC3M"],["Video","https://youtu.be/wXhWU8UySsI"]]},
+    {n:"socketGameIO",star:"★ 4",c:"#5aa24a",d:"A real-time online multiplayer game built on JavaScript and WebSockets via socket.io.",t:["socket.io","WebSockets","Node"],links:[["Code","https://github.com/ayxos/socketGameIO"]]},
+    {n:"htmlEditor",star:"★ 7",c:"#3aa5e6",d:"A Markdown / HTML online editor aimed at translators — with word count, a speed timer and revenue-per-word calc.",t:["JavaScript","Markdown"],links:[["Code","https://github.com/ayxos/htmlEditor"]]},
+    {n:"node_APIrest",star:"★ 3",c:"#8892c8",d:"A REST API system built on Mongoose with Node and Express — a clean back-end starting point.",t:["Node","Express","Mongoose"],links:[["Code","https://github.com/ayxos/node_APIrest"]]},
+    {n:"LondonBusStopFinder",star:"★ 2",c:"#e6b23a",d:"A finder for London's bus stops — a small mapping tool from the London days.",t:["JavaScript","Maps"],links:[["Code","https://github.com/ayxos/LondonBusStopFinder"]]},
+    {n:"lanny",star:"Py · 2026",recent:true,c:"#3ac47a",d:"A network-monitoring experiment in Python — still scratching the systems itch.",t:["Python","Networking"],links:[["Code","https://github.com/ayxos/lanny"]]},
+    {n:"decky-chat-plugin",star:"2025",recent:true,c:"#4fd6e6",d:"A Decky Loader plugin for the Steam Deck — real-time messaging between your Deck and your phone over WebSockets.",t:["Steam Deck","Decky Loader","WebSockets","TypeScript"],links:[["Code","https://github.com/ayxos/decky-chat-plugin"]]},
+    {n:"MyPass",star:"2025",recent:true,c:"#8892c8",d:"A secure password manager — store and manage all your credentials in one place. React front-end, Express API, MySQL.",t:["React","Express","MySQL"],links:[["Code","https://github.com/ayxos/MyPass"]]},
+    {n:"social-rehub",star:"Ext",c:"#5aa24a",d:"A Chrome extension that measures your social-media addiction — a gentle nudge to reclaim your attention.",t:["Chrome Extension","JavaScript"],links:[["Code","https://github.com/ayxos/social-rehub"]]}
+  ];
+  var inv = document.getElementById("inv");
+  PROJECTS.forEach(function(p){
+    var el = document.createElement("div");
+    el.className = "item block rise" + (p.rare ? " item--rare" : "");
+    var tags = p.t.map(function(x){return '<span class="item__t">'+x+'</span>';}).join("");
+    var links = p.links.map(function(l){return '<a class="chip" href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+'</a>';}).join("");
+    el.innerHTML =
+      '<div class="item__top"><span class="item__ic" style="background:'+p.c+'"></span>'+
+      '<span class="item__name">'+p.n+'</span>'+(p.recent?'<span class="item__new">NEW</span>':'')+'<span class="item__star">'+p.star+'</span></div>'+
+      '<p class="item__desc">'+p.d+'</p>'+
+      '<div class="item__tags">'+tags+'</div>'+
+      '<div class="item__links">'+links+'</div>';
+    inv.appendChild(el);
+  });
+
+  /* ---------- SKILLS ---------- */
+  var SKILLS = [
+    ["Languages",["JavaScript (ES5 → ES6+)","TypeScript","PHP","HTML5","CSS3"]],
+    ["Frameworks",["React.js","AngularJS","Backbone / Marionette","Node / Express","Laravel · Lumen · CodeIgniter"]],
+    ["Build & tooling",["Webpack","Vite","Gulp","Grunt","Browserify","RequireJS"]],
+    ["Testing",["Jest","Enzyme","Jasmine","Karma","Protractor","TDD"]],
+    ["Data",["ClickHouse","Elasticsearch","MongoDB","MariaDB","MySQL","Postgres"]],
+    ["Infra & DevOps",["Docker","Vagrant / VBox","Puppet","Jenkins CI/CD","Nginx · Apache"]],
+    ["Templating & style",["Jade / Handlebars","JSX","Sass","Stylus","Less"]],
+    ["Ways of working",["Scrum","Kanban","Jira · Confluence","REST / SOAP","Authentication","Mentoring"]]
+  ];
+  var sg = document.getElementById("skills-grid");
+  SKILLS.forEach(function(s){
+    var el = document.createElement("div");
+    el.className = "skb block rise";
+    el.innerHTML = '<div class="skb__h"><span class="dot"></span>'+s[0]+'</div>'+
+      '<div class="skb__list">'+s[1].map(function(x){return '<span>'+x+'</span>';}).join("")+'</div>';
+    sg.appendChild(el);
+  });
+
+  /* ---------- REVEAL ---------- */
+  var rises = document.querySelectorAll(".rise");
+  if(reduce || !("IntersectionObserver" in window)){
+    rises.forEach(function(r){r.classList.add("in");});
+  } else {
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    },{threshold:.12, rootMargin:"0px 0px -8% 0px"});
+    rises.forEach(function(r){io.observe(r);});
+  }
+
+  /* ---------- HERO VOXEL TITLE ---------- */
+  var LET = {
+    M:["X...X","XX.XX","X.X.X","X.X.X","X...X","X...X","X...X"],
+    A:[".XXX.","X...X","X...X","XXXXX","X...X","X...X","X...X"],
+    R:["XXXX.","X...X","X...X","XXXX.","X.X..","X..X.","X...X"],
+    C:[".XXXX","X....","X....","X....","X....","X....",".XXXX"],
+    O:[".XXX.","X...X","X...X","X...X","X...X","X...X",".XXX."]
+  };
+  var WORD = "MARCO";
+  var cv = document.getElementById("hero-canvas");
+  var ctx = cv.getContext("2d");
+  var dpr = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+  var cssW=0, cssH=0, t=0, raf=null;
+  var motes = [];
+
+  function cssVar(n){ return getComputedStyle(root).getPropertyValue(n).trim(); }
+  function shade(hex, f){
+    hex = hex.replace("#","");
+    if(hex.length===3) hex = hex.split("").map(function(c){return c+c;}).join("");
+    var r=parseInt(hex.substr(0,2),16),g=parseInt(hex.substr(2,2),16),b=parseInt(hex.substr(4,2),16);
+    r=Math.round(Math.min(255,Math.max(0,r*f)));g=Math.round(Math.min(255,Math.max(0,g*f)));b=Math.round(Math.min(255,Math.max(0,b*f)));
+    return "rgb("+r+","+g+","+b+")";
+  }
+
+  function resize(){
+    cssW = cv.clientWidth; cssH = cv.clientHeight;
+    cv.width = Math.round(cssW*dpr); cv.height = Math.round(cssH*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(motes.length===0){
+      var cols=["--grass","--gold","--diamond","--redstone"];
+      for(var i=0;i<7;i++){
+        motes.push({x:Math.random()*cssW,y:Math.random()*cssH,s:6+Math.random()*10,
+          v:0.12+Math.random()*0.35, c:cols[i%cols.length], ph:Math.random()*6.28});
+      }
+    }
+  }
+
+  function drawCube(x,y,s,base){
+    ctx.fillStyle = base; ctx.fillRect(x,y,s,s);
+    ctx.fillStyle = shade(base,1.35); ctx.fillRect(x,y,s,Math.max(1,s*0.16)); ctx.fillRect(x,y,Math.max(1,s*0.16),s);
+    ctx.fillStyle = shade(base,0.6);  ctx.fillRect(x,y+s-Math.max(1,s*0.16),s,Math.max(1,s*0.16)); ctx.fillRect(x+s-Math.max(1,s*0.16),y,Math.max(1,s*0.16),s);
+  }
+
+  function drawHero(){
+    if(!cssW) resize();
+    ctx.clearRect(0,0,cssW,cssH);
+
+    var diamond = cssVar("--diamond") || "#4fe3d6";
+
+    // layout
+    var totalCols = 0;
+    for(var i=0;i<WORD.length;i++){ totalCols += 5; if(i<WORD.length-1) totalCols += 1; }
+    var cell = Math.floor(Math.min(cssW/(totalCols+3), cssH/11));
+    cell = Math.max(4, cell);
+    var depth = Math.max(2, Math.round(cell*0.55));
+    var wordW = totalCols*cell;
+    var wordH = 7*cell;
+    var bob = reduce ? 0 : Math.sin(t*0.9)*cell*0.35;
+    var ox = (cssW - wordW - depth)/2;
+    var oy = (cssH - wordH - depth)/2 + bob;
+
+    // floating background motes
+    for(var m=0;m<motes.length;m++){
+      var mo = motes[m];
+      if(!reduce){ mo.y -= mo.v; mo.x += Math.sin(t*0.6+mo.ph)*0.15; if(mo.y < -mo.s) mo.y = cssH+mo.s; }
+      ctx.globalAlpha = 0.20;
+      drawCube(mo.x, mo.y, mo.s, cssVar(mo.c)||"#888");
+      ctx.globalAlpha = 1;
+    }
+
+    // torch glow
+    var gx = cssW/2, gy = cssH/2;
+    var pulse = reduce ? 0.55 : 0.5 + Math.sin(t*1.6)*0.06;
+    var g = ctx.createRadialGradient(gx,gy,0,gx,gy,wordW*0.62);
+    g.addColorStop(0, "rgba(255,207,77,"+(0.16*pulse+0.05)+")");
+    g.addColorStop(1, "rgba(255,207,77,0)");
+    ctx.fillStyle = g; ctx.fillRect(0,0,cssW,cssH);
+
+    // extruded back faces
+    var d;
+    for(d=depth; d>=1; d--){
+      var f = 0.32 + (depth-d)/depth*0.22;
+      cursorDraw(ox+d, oy+d, cell, shade(diamond, f), false);
+    }
+    // front face (bevelled)
+    cursorDraw(ox, oy, cell, diamond, true);
+  }
+
+  function cursorDraw(ox, oy, cell, color, bevel){
+    var cx = ox;
+    for(var i=0;i<WORD.length;i++){
+      var glyph = LET[WORD[i]];
+      for(var r=0;r<glyph.length;r++){
+        var row = glyph[r];
+        for(var c=0;c<row.length;c++){
+          if(row[c] === "X"){
+            var x = cx + c*cell, y = oy + r*cell;
+            if(bevel){ drawCube(x,y,cell,color); }
+            else { ctx.fillStyle = color; ctx.fillRect(x,y,cell,cell); }
+          }
+        }
+      }
+      cx += 6*cell;
+    }
+  }
+
+  function loop(){ t += 0.016; drawHero(); raf = requestAnimationFrame(loop); }
+
+  resize();
+  drawHero();
+  if(!reduce){ raf = requestAnimationFrame(loop); }
+  window.addEventListener("resize", function(){
+    dpr = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+    resize(); if(reduce) drawHero();
+  });
+})();
+
+/* ============ WALKER — a Mario-style run: bump the University block to grow, then suit up per company ============ */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cv = document.getElementById("walker");
+  if(!cv) return;
+  var ctx = cv.getContext("2d");
+  var root = document.documentElement;
+  var dpr = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+  var W=0, H=0;
+
+  function resize(){
+    W = window.innerWidth; H = cv.clientHeight;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  /* outfit + size per career stage:
+     0 Madrid kid · 1 UC3M graduate (grows) · 2 Portzar · 3 Buongiorno · 4 Smaato · 5 Gravite (suit) */
+  var FORMS = [
+    {size:0.58, shirt:[104,196,120], pants:[74,92,120], hair:[120,80,48], tie:0, blazer:0, cap:0},
+    {size:0.80, shirt:[74,170,196],  pants:[60,74,104], hair:[120,80,48], tie:0, blazer:0, cap:1},
+    {size:0.88, shirt:[64,200,180],  pants:[60,74,104], hair:[112,74,44], tie:0, blazer:0, cap:0},
+    {size:0.95, shirt:[226,134,72],  pants:[54,64,92],  hair:[104,68,40], tie:0, blazer:0, cap:0},
+    {size:1.03, shirt:[86,132,214],  pants:[46,56,82],  hair:[96,62,38],  tie:1, blazer:0, cap:0},
+    {size:1.14, shirt:[236,236,242], pants:[38,44,60],  hair:[88,58,36],  tie:1, blazer:1, cap:0}
+  ];
+  var TAGS = ["Madrid","University","Portzar","Buongiorno","Smaato","Gravite"];
+  var LEG=20,LEGW=7,TW=18,TH=20,HEAD=17,ARM=19,ARMW=5, CHARH=LEG+TH+HEAD;
+  var GROW_MS=1550, BUILD_MS=1700, MORPH_MS=380;
+
+  var lvls = Array.prototype.slice.call(document.querySelectorAll(".lvl[data-tag]"));
+  var progress=0, cx=60, groundY=0, bob=0, facing=1, walkPhase=0, lastMove=-9999, lastY=window.scrollY;
+  var targetStage=0, committed=0, evt=null, morph=null;
+
+  function computeTarget(){
+    if(!lvls.length){ targetStage=0; return; }
+    var mid=window.scrollY+window.innerHeight/2, best=0, bestD=Infinity;
+    for(var i=0;i<lvls.length;i++){
+      var r=lvls[i].getBoundingClientRect(), c=window.scrollY+r.top+r.height/2, d=Math.abs(c-mid);
+      if(d<bestD){bestD=d;best=i;}
+    }
+    targetStage=best;
+  }
+  function onScroll(){
+    var y=window.scrollY, max=Math.max(1, root.scrollHeight-window.innerHeight);
+    progress=Math.min(1,Math.max(0,y/max));
+    var dy=y-lastY; lastY=y;
+    if(Math.abs(dy)>0.4){ facing=dy>0?1:-1; walkPhase+=Math.min(0.55,Math.abs(dy)*0.045); if(walkPhase>1e6)walkPhase=0; lastMove=performance.now(); }
+    computeTarget();
+  }
+  function reconcile(now){
+    if(evt||morph) return;
+    if(committed<targetStage){
+      if(targetStage-committed===1) evt={type: committed+1===1?"grow":"build", from:committed, to:committed+1, t0:now};
+      else morph={from:committed,to:targetStage,t0:now};
+    } else if(committed>targetStage){
+      morph={from:committed,to:targetStage,t0:now};
+    }
+  }
+
+  /* ---- helpers ---- */
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function smooth(t){t=clamp(t,0,1);return t*t*(3-2*t);}
+  function rgb(a){return "rgb("+(a[0]|0)+","+(a[1]|0)+","+(a[2]|0)+")";}
+  function mixA(a,b,t){return [lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];}
+  function tvar(n,f){return (getComputedStyle(root).getPropertyValue(n).trim())||f;}
+  function resolveForm(bf){
+    bf=clamp(bf,0,FORMS.length-1);
+    var lo=Math.floor(bf), hi=Math.min(FORMS.length-1,lo+1), f=bf-lo, A=FORMS[lo], B=FORMS[hi];
+    return {size:lerp(A.size,B.size,f), shirt:mixA(A.shirt,B.shirt,f), pants:mixA(A.pants,B.pants,f),
+            hair:mixA(A.hair,B.hair,f), tie:lerp(A.tie,B.tie,f), blazer:lerp(A.blazer,B.blazer,f), cap:lerp(A.cap,B.cap,f)};
+  }
+  function blk(x,y,w,h,c){
+    ctx.fillStyle=c; ctx.fillRect(x,y,w,h);
+    var b=Math.max(0.8,h*0.16);
+    ctx.fillStyle="rgba(255,255,255,.22)"; ctx.fillRect(x,y,w,b);
+    ctx.fillStyle="rgba(0,0,0,.20)"; ctx.fillRect(x,y+h-b,w,b);
+  }
+  function limb(px,py,ang,w,len,c){ ctx.save(); ctx.translate(px,py); ctx.rotate(ang); blk(-w/2,0,w,len,c); ctx.restore(); }
+
+  function drawChar(F, ex){
+    var s=F.size*(ex.sb||1);
+    ctx.save();
+    ctx.globalAlpha = ex.alpha==null?1:ex.alpha;
+    ctx.translate(cx+(ex.lx||0), groundY+bob+(ex.ly||0));
+    ctx.scale(facing*s, s*(ex.sy||1));
+    var la = ex.step ? Math.sin(performance.now()*0.018)*0.5 : (ex.walk ? Math.sin(walkPhase)*0.55 : 0);
+    var aa = ex.step ? Math.sin(performance.now()*0.018)*0.5 : (ex.walk ? Math.sin(walkPhase)*0.5 : 0.06);
+    var hipY=-LEG, tTop=hipY-TH, shY=tTop+3, hTop=tTop-HEAD;
+    var pants=rgb(F.pants), hair=rgb(F.hair);
+    var arm = F.blazer>0.5 ? "rgb(40,46,66)" : rgb(mixA(F.shirt,[0,0,0],0.12));
+    limb(-4,hipY,la,LEGW,LEG,pants);
+    limb(4,hipY,-la,LEGW,LEG,pants);
+    /* torso */
+    if(F.blazer>0.5){
+      blk(-TW/2,tTop,TW,TH,"rgb(40,46,66)");
+      blk(-3.5,tTop,7,TH,"rgb(232,232,240)");
+      blk(-1.6,tTop+2,3.2,TH-4,"rgb(176,58,52)");
+    } else {
+      blk(-TW/2,tTop,TW,TH,rgb(F.shirt));
+      blk(-TW/2,tTop,TW,4,"rgba(255,255,255,.18)");
+      if(F.tie>0.4) blk(-1.6,tTop+3,3.2,TH-5,"rgb(176,58,52)");
+    }
+    limb(-(TW/2+ARMW/2),shY,-aa,ARMW,ARM,arm);
+    ctx.save();  /* front arm + pickaxe (the running gag) */
+    ctx.translate(TW/2+ARMW/2,shY); ctx.rotate(aa);
+    blk(-ARMW/2,0,ARMW,ARM,arm);
+    ctx.translate(0,ARM);
+    blk(-1.6,-3,3.2,17,"rgb(138,90,52)");
+    blk(-8,-5,16,4,"rgb(127,230,219)");
+    ctx.restore();
+    /* head */
+    blk(-HEAD/2,hTop,HEAD,HEAD,"rgb(232,185,143)");
+    if(F.cap>0.5){
+      blk(-HEAD/2,hTop-1,HEAD,4,"rgb(30,30,40)");
+      blk(-HEAD/2-3,hTop-5,HEAD+6,4,"rgb(20,20,28)");
+      ctx.fillStyle="rgb(255,207,77)"; ctx.fillRect(HEAD/2,hTop-4,2,10); ctx.fillRect(HEAD/2,hTop+6,4,2);
+    } else {
+      blk(-HEAD/2,hTop,HEAD,5,hair);
+      blk(-HEAD/2,hTop,3,HEAD*0.55,hair);
+    }
+    ctx.fillStyle="#222";
+    ctx.fillRect(HEAD/2-6,hTop+7,2.6,3.2);
+    ctx.fillRect(HEAD/2-11,hTop+7,2.6,3.2);
+    ctx.restore();
+  }
+
+  function rgba(a,al){return "rgba("+(a[0]|0)+","+(a[1]|0)+","+(a[2]|0)+","+al+")";}
+
+  /* each company gets its own silhouette, real-ish brand color + a stylized emblem */
+  var BUILDINGS = {
+    Portzar:    {type:"storefront", body:[196,110,66], roof:[120,66,42], accent:[74,168,120], door:[58,40,28]},
+    Buongiorno: {type:"villa",      body:[240,198,98], roof:[204,48,60], accent:[255,206,90],  door:[122,72,40]},
+    Smaato:     {type:"office",     body:[240,92,66],  roof:[190,60,44], accent:[255,228,150], door:[70,42,42]},
+    Gravite:    {type:"tower",      body:[40,48,72],   roof:[30,36,56],  accent:[74,224,208],  door:[24,30,46]}
+  };
+
+  function litWin(glow){ return glow ? "rgb(255,224,150)" : "rgb(158,196,216)"; }
+
+  var SHAPES = {
+    storefront: function(c, baseY, s, glow){
+      var bw=88, bh=54, bx=c-bw/2, by=baseY-bh;
+      blk(bx,by,bw,bh,rgb(s.body));
+      /* striped awning */
+      var ay=by+16, seg=bw/7;
+      for(var i=0;i<7;i++){ ctx.fillStyle=(i%2)?"rgba(255,255,255,.9)":rgb(s.accent); ctx.fillRect(bx+i*seg,ay,seg,7); }
+      ctx.fillStyle=rgb(s.accent);
+      for(i=0;i<7;i++){ ctx.beginPath(); ctx.moveTo(bx+i*seg,ay+7); ctx.lineTo(bx+(i+0.5)*seg,ay+13); ctx.lineTo(bx+(i+1)*seg,ay+7); ctx.closePath(); ctx.fill(); }
+      ctx.fillStyle=litWin(glow); ctx.fillRect(bx+11,by+28,17,15); ctx.fillRect(bx+bw-28,by+28,17,15);
+      ctx.fillStyle=rgb(s.door); ctx.fillRect(c-11,baseY-30,22,30);
+      ctx.fillStyle=glow?"rgba(255,222,150,.9)":"rgba(0,0,0,.3)"; ctx.fillRect(c-9,baseY-27,18,27);
+      return by;
+    },
+    villa: function(c, baseY, s, glow){
+      var bw=80, bh=50, bx=c-bw/2, by=baseY-bh;
+      blk(bx,by,bw,bh,rgb(s.body));
+      ctx.fillStyle=rgb(s.roof);
+      ctx.beginPath(); ctx.moveTo(bx-7,by); ctx.lineTo(c,by-26); ctx.lineTo(bx+bw+7,by); ctx.closePath(); ctx.fill();
+      /* rising sun in the gable */
+      ctx.fillStyle=rgb(s.accent);
+      ctx.beginPath(); ctx.arc(c, by-4, 7, Math.PI, 2*Math.PI); ctx.fill();
+      for(var r=0;r<5;r++){ var a=Math.PI+ (r+0.5)*(Math.PI/5); ctx.fillRect(c+Math.cos(a)*11-1, by-4+Math.sin(a)*11-1, 2, 4); }
+      ctx.fillStyle=litWin(glow); ctx.fillRect(bx+13,by+13,14,14); ctx.fillRect(bx+bw-27,by+13,14,14);
+      ctx.fillStyle=rgb(s.door); ctx.fillRect(c-10,baseY-28,20,28);
+      ctx.fillStyle=glow?"rgba(255,222,150,.9)":"rgba(0,0,0,.3)"; ctx.fillRect(c-8,baseY-25,16,25);
+      return by-26;
+    },
+    office: function(c, baseY, s, glow){
+      var bw=64, bh=86, bx=c-bw/2, by=baseY-bh;
+      blk(bx,by,bw,bh,rgb(s.body));
+      var cols=3, rows=4, pad=8, gw=(bw-pad*(cols+1))/cols, gh=(bh-pad*(rows+1))/rows;
+      ctx.fillStyle=litWin(glow);
+      for(var rr=0;rr<rows;rr++) for(var cc=0;cc<cols;cc++) ctx.fillRect(bx+pad+cc*(gw+pad), by+pad+rr*(gh+pad), gw, gh);
+      ctx.fillStyle=rgb(s.door); ctx.fillRect(c-10,baseY-26,20,26);
+      /* antenna + broadcast waves */
+      ctx.fillStyle=rgb(s.accent); ctx.fillRect(c-1.5, by-14, 3, 14);
+      ctx.strokeStyle=rgb(s.accent); ctx.lineWidth=2;
+      for(var k=1;k<=3;k++){ ctx.beginPath(); ctx.arc(c, by-14, k*5, -0.78*Math.PI, -0.22*Math.PI); ctx.stroke(); }
+      ctx.fillStyle=rgb(s.accent); ctx.fillRect(c-2.5,by-17,5,4);
+      return by-30;
+    },
+    tower: function(c, baseY, s, glow){
+      var bw=52, bh=106, bx=c-bw/2, by=baseY-bh;
+      blk(bx,by,bw,bh,rgb(s.body));
+      ctx.fillStyle=rgb(s.accent); ctx.fillRect(bx,by,3,bh); ctx.fillRect(bx+bw-3,by,3,bh);
+      ctx.fillStyle=glow?"rgb(128,242,230)":rgba(s.accent,0.5);
+      for(var col=0;col<3;col++){ ctx.fillRect(bx+11+col*14, by+12, 6, bh-34); }
+      ctx.fillStyle=rgb(s.door); ctx.fillRect(c-9,baseY-24,18,24);
+      ctx.fillStyle=glow?"rgba(128,242,230,.9)":"rgba(0,0,0,.3)"; ctx.fillRect(c-7,baseY-21,14,21);
+      ctx.fillStyle=rgb(s.roof);
+      ctx.beginPath(); ctx.moveTo(bx+5,by); ctx.lineTo(c,by-22); ctx.lineTo(bx+bw-5,by); ctx.closePath(); ctx.fill();
+      ctx.fillStyle=rgb(s.accent); ctx.fillRect(c-1.5,by-27,3,7);
+      return by-27;
+    }
+  };
+
+  function drawBillboard(c, topY, name, glow){
+    ctx.font="800 12px ui-monospace, Menlo, Consolas, monospace";
+    var sw=Math.max(88, ctx.measureText(name.toUpperCase()).width+26), sh=24, sx=c-sw/2, sy=topY-10-sh;
+    ctx.fillStyle="rgb(28,36,48)"; ctx.fillRect(c-2,sy+sh,4,10);
+    blk(sx,sy,sw,sh,"rgb(32,42,56)");
+    blk(sx,sy,sw,3,tvar("--diamond","#4fe3d6"));
+    ctx.fillStyle=tvar("--gold","#ffcf4d"); ctx.textAlign="center"; ctx.textBaseline="middle";
+    ctx.fillText(name.toUpperCase(), c, sy+sh/2+1);
+    ctx.textBaseline="alphabetic";
+  }
+
+  function drawBuilding(center, baseY, name, alpha, glow){
+    var spec=BUILDINGS[name]; if(!spec) return;
+    var c=clamp(center, 64, W-64);
+    ctx.save(); ctx.globalAlpha=alpha;
+    var topY=SHAPES[spec.type](c, baseY, spec, glow);
+    drawBillboard(c, topY, name, glow);
+    ctx.restore();
+  }
+  function drawUniBlock(x,y,bump){
+    ctx.save();
+    blk(x-17,y-17+bump,34,34,tvar("--gold","#ffcf4d"));
+    ctx.fillStyle="rgba(0,0,0,.6)"; ctx.font="900 22px ui-monospace, Menlo, Consolas, monospace";
+    ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText("?", x, y+bump);
+    ctx.textBaseline="alphabetic";
+    ctx.fillStyle=tvar("--diamond","#4fe3d6"); ctx.font="700 10px ui-monospace, Menlo, Consolas, monospace";
+    ctx.fillText("UNIVERSITY", x, y+32+bump);
+    ctx.restore();
+  }
+  function drawCap(x,y){
+    ctx.save(); ctx.translate(x,y);
+    ctx.fillStyle="rgb(26,26,36)"; ctx.fillRect(-10,-2,20,3.5); ctx.fillRect(-3.5,0,7,5);
+    ctx.fillStyle="rgb(255,207,77)"; ctx.fillRect(9,-2,2,9);
+    ctx.restore();
+  }
+
+  function draw(now){
+    ctx.clearRect(0,0,W,H);
+    groundY=H-18;
+    var margin=48;
+    cx = margin + progress*(W - margin*2 - 96);
+    var moving=(now-lastMove)<=150;
+
+    if(reduce){ committed=targetStage; evt=null; morph=null; }
+    else reconcile(now);
+
+    var bf=committed;
+    var ex={sb:1, alpha:1, lx:0, ly:0, sy:1, walk:false, step:false};
+    var uni=null, cap=null, build=null;
+
+    if(morph){
+      var mt=(now-morph.t0)/MORPH_MS;
+      if(mt>=1){ committed=morph.to; bf=committed; morph=null; ex.walk=moving; }
+      else { bf=lerp(morph.from,morph.to,smooth(mt)); ex.walk=moving; }
+    } else if(evt){
+      var dur=evt.type==="grow"?GROW_MS:BUILD_MS, et=(now-evt.t0)/dur;
+      if(et>=1){ committed=evt.to; bf=committed; evt=null; ex.walk=moving; }
+      else if(evt.type==="grow"){
+        bf = evt.from + smooth(clamp((et-0.52)/0.30,0,1))*(evt.to-evt.from);
+        ex.ly = -26*Math.sin(Math.PI*clamp(et/0.30,0,1));                 /* hop */
+        ex.sy = 1 + 0.16*Math.sin(Math.PI*clamp((et-0.52)/0.30,0,1));     /* grow pop */
+        var sz=resolveForm(bf).size, headY=groundY+bob+ex.ly - CHARH*sz;
+        uni={x:cx, y:headY-30, bump:(et>=0.12&&et<=0.24)?-7*Math.sin(Math.PI*(et-0.12)/0.12):0};
+        if(et>=0.15 && et<=0.60){
+          var t2=clamp((et-0.15)/0.42,0,1);
+          cap={x:lerp(uni.x,cx,t2), y:lerp(uni.y,headY-2,t2)-Math.sin(Math.PI*t2)*26};
+        }
+      } else { /* building / suit-up */
+        build={name:TAGS[evt.to], glow:(et>=0.34&&et<0.6),
+               alpha: et<0.12? smooth(et/0.12) : (et>0.9? 1-smooth((et-0.9)/0.1) : 1)};
+        bf = et<0.5 ? evt.from : evt.to;
+        if(et<0.34){ ex.lx=facing*9*smooth(et/0.34); ex.alpha=et<0.22?1:1-smooth((et-0.22)/0.12); ex.step=true; }
+        else if(et<0.5){ ex.alpha=0; }
+        else if(et<0.66){ ex.alpha=smooth((et-0.5)/0.16); ex.lx=facing*9*(1-smooth((et-0.5)/0.16)); ex.step=true; }
+        else { ex.step = et<0.84; }
+      }
+    } else {
+      ex.walk = moving;
+    }
+
+    var evActive = !!evt;
+    bob = (moving && !evActive) ? -Math.abs(Math.sin(walkPhase))*3 : -Math.sin(now/560)*1.3-0.3;
+    var F=resolveForm(bf);
+
+    if(build) drawBuilding(cx, groundY, build.name, build.alpha, build.glow);
+
+    ctx.save(); ctx.globalAlpha=0.15*(ex.alpha==null?1:ex.alpha); ctx.fillStyle="#000";
+    ctx.beginPath(); ctx.ellipse(cx+(ex.lx||0), groundY+3, 32*F.size, 6*F.size,0,0,6.29); ctx.fill(); ctx.restore();
+
+    drawChar(F, ex);
+
+    if(uni) drawUniBlock(uni.x, uni.y, uni.bump);
+    if(cap) drawCap(cap.x, cap.y);
+
+    /* level label (hidden during events — the props already carry the name) */
+    if(lvls.length && !evt){
+      var idx=clamp(Math.round(committed),0,FORMS.length-1);
+      var topY=groundY+bob - CHARH*F.size - 16;
+      ctx.textAlign="center"; ctx.font="700 11px ui-monospace, Menlo, Consolas, monospace";
+      var label="Lv."+(idx+1)+" · "+lvls[idx].getAttribute("data-tag");
+      ctx.lineWidth=3.5; ctx.strokeStyle="rgba(0,0,0,.4)"; ctx.strokeText(label,cx,topY);
+      ctx.fillStyle=tvar("--diamond","#4fe3d6"); ctx.fillText(label,cx,topY);
+    }
+  }
+
+  function loop(){ draw(performance.now()); requestAnimationFrame(loop); }
+
+  resize(); onScroll();
+  if(reduce){
+    window.addEventListener("scroll", function(){ onScroll(); draw(performance.now()); }, {passive:true});
+    draw(performance.now());
+  } else {
+    window.addEventListener("scroll", onScroll, {passive:true});
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener("resize", function(){
+    dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
+    resize(); onScroll(); if(reduce) draw(performance.now());
+  });
+})();
+</script>
+</body>
 </html>
