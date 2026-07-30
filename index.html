@@ -176,6 +176,16 @@
   .hero__loc{display:inline-flex;gap:9px;align-items:center;font-family:var(--mono);font-size:.76rem;
     letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-top:20px}
   .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .hero__grid{display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(18px,3vw,36px)}
+  .hero__col{flex:1 1 340px;min-width:0}
+  .hero__card{margin:0;flex:0 0 auto;width:clamp(140px,20vw,190px);text-align:center}
+  .hero__card img{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+  .hero__card figcaption{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-dim);margin-top:10px}
+  @media(max-width:679px){
+    .hero__grid{justify-content:center}
+    .hero__card{order:-1;width:150px;margin-inline:auto}
+  }
 
   /* ============ STATS / HUD ============ */
   .xpbar{margin-top:10px}
@@ -197,20 +207,6 @@
   .stat:nth-child(2) .stat__num{color:var(--gold)}
   .stat:nth-child(3) .stat__num{color:var(--grass)}
   .stat:nth-child(4) .stat__num{color:var(--redstone)}
-
-  .hotbar-wrap{margin-top:30px}
-  .hotbar-title{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
-  .hotbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  @media(min-width:560px){.hotbar{grid-template-columns:repeat(9,1fr)}}
-  .slot{aspect-ratio:1;position:relative;background:var(--stone-2);display:grid;place-items:center;
-    box-shadow:inset 3px 3px 0 var(--lo),inset -3px -3px 0 var(--hi);cursor:default;transition:transform .12s ease}
-  .slot:hover{transform:translateY(-4px)}
-  .slot__key{position:absolute;top:3px;left:4px;font-family:var(--mono);font-size:.62rem;color:var(--ink-dim);opacity:.7}
-  .slot__ic{width:56%;height:56%;box-shadow:inset 3px 3px 0 rgba(255,255,255,.4),inset -3px -3px 0 rgba(0,0,0,.35)}
-  .slot__name{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);white-space:nowrap;
-    font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:var(--ink);background:var(--stone);
-    padding:3px 7px;opacity:0;pointer-events:none;transition:opacity .12s;box-shadow:0 3px 0 rgba(0,0,0,.3);z-index:5}
-  .slot:hover .slot__name{opacity:1}
 
   /* ============ JOURNEY / TIMELINE ============ */
   .journey{background:var(--ground-2)}
@@ -299,6 +295,12 @@
   .contact .sec-title{margin-inline:auto}
   .contact .sec-lead{margin-inline:auto}
   .contact__cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+  .clonecmd{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px;
+    font-family:var(--mono);font-size:.78rem;color:var(--ink-dim);background:var(--stone);padding:11px 15px;
+    box-shadow:inset 2px 2px 0 var(--lo),inset -2px -2px 0 var(--hi);word-break:break-all}
+  .clonecmd b{color:var(--grass);font-weight:800}
+  .clonecmd a{color:var(--diamond);text-decoration:none;font-weight:700}
+  .clonecmd a:hover{text-decoration:underline}
   footer{border-top:1px solid var(--line);padding:26px 20px;text-align:center;
     font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);letter-spacing:.06em}
   footer b{color:var(--grass)}
@@ -308,31 +310,14 @@
   .rise.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){
     .rise{opacity:1;transform:none;transition:none}
-    .slot,.item,.btn{transition:none}
+    .item,.btn{transition:none}
   }
 
   /* ============ WALKER ============ */
-  #walker{position:fixed;left:0;bottom:0;width:100%;height:220px;z-index:40;pointer-events:none;image-rendering:pixelated}
+  /* full-viewport canvas: the runner walks the bottom edge normally and climbs
+     down the side of the timeline while the journey section owns the screen */
+  #walker{position:fixed;left:0;top:0;width:100%;height:100%;z-index:40;pointer-events:none;image-rendering:pixelated}
   .page{padding-bottom:60px}
-
-  /* ===== GAME-DEV REEL ===== */
-  #reel .reel{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
-  @media(min-width:720px){#reel .reel{grid-template-columns:1fr 1fr}}
-  .vid{position:relative;aspect-ratio:16/9;width:100%;border:0;cursor:pointer;overflow:hidden;
-    background:linear-gradient(135deg,#12232e,#0b1620);color:var(--ink);text-align:left;font-family:var(--mono);
-    box-shadow:inset 3px 3px 0 var(--hi),inset -3px -3px 0 var(--lo),0 10px 0 -3px rgba(0,0,0,.28);
-    display:flex;flex-direction:column;justify-content:flex-end;padding:16px;transition:transform .14s ease}
-  .vid:hover{transform:translateY(-4px)}
-  .vid__tag{position:absolute;top:0;left:0;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
-    color:#04201d;background:var(--diamond);padding:5px 10px;font-weight:800}
-  .vid__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;
-    background:var(--gold);box-shadow:inset 3px 3px 0 rgba(255,255,255,.45),inset -3px -3px 0 rgba(0,0,0,.35);
-    display:grid;place-items:center;transition:transform .14s ease,background-color .2s}
-  .vid:hover .vid__play{transform:translate(-50%,-50%) scale(1.1);background:var(--diamond-2)}
-  .vid__play::after{content:"";width:0;height:0;border-left:20px solid #04201d;
-    border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
-  .vid__title{position:relative;z-index:2;font-size:.94rem;font-weight:700;letter-spacing:.02em;text-shadow:0 2px 8px rgba(0,0,0,.7)}
-  .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
   /* ===== MODERN / CLASSIC VIEW SWITCH ===== */
   .viewswitch{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:130;display:flex;
@@ -360,10 +345,7 @@
       </div>
       <nav class="topbar__nav">
         <a class="navlink" href="#journey">Journey</a>
-        <a class="navlink" href="#reel">Reel</a>
         <a class="navlink" href="#projects">Builds</a>
-        <a class="navlink" href="#skills">Toolkit</a>
-        <a class="navlink" href="#contact">Contact</a>
         <button class="toggle" id="theme-toggle" aria-label="Toggle day / night" title="Day / Night">☀</button>
       </nav>
     </div>
@@ -373,15 +355,24 @@
   <section class="hero">
     <div class="wrap">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
-      <h1 class="hero__name">Marco A. Pajares Silva</h1>
-      <p class="hero__role"><b>Head of Core Development</b> @ Gravite</p>
-      <p class="hero__tag">A kid from Madrid who cared more about <em>building</em> worlds than just playing in them — shipped a Kinect-controlled 3D game as his final thesis, then spent the next 13 years turning that same instinct into production software. Today I lead the engineering core of an ad exchange in Hamburg that processes <strong>billions of requests a month</strong>.</p>
-      <p class="hero__loc"><span class="dot" style="background:var(--grass)"></span> Madrid, ES → Hamburg, DE &nbsp;·&nbsp; JavaScript · Node.js · React · PHP</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#journey">▶ Start the run</a>
-        <a class="btn" href="https://github.com/ayxos" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/marco-a-pajares-silva-0524573a/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="http://ayxos.github.io/" target="_blank" rel="noopener">ayxos.github.io</a>
+      <div class="hero__grid">
+        <div class="hero__col">
+          <h1 class="hero__name">Marco A. Pajares Silva</h1>
+          <p class="hero__role"><b>Head of Core Development</b> @ Gravite</p>
+          <p class="hero__tag">A kid from Madrid who cared more about <em>building</em> worlds than just playing in them — shipped a Kinect-controlled 3D game as his final thesis, then spent the next 13 years turning that same instinct into production software. Today I lead the engineering core of an ad exchange in Hamburg that processes <strong>billions of requests a month</strong>.</p>
+          <p class="hero__loc"><span class="dot" style="background:var(--grass)"></span> Madrid, ES → Hamburg, DE &nbsp;·&nbsp; JavaScript · Node.js · React · PHP</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#journey">▶ Start the run</a>
+            <a class="btn" href="https://github.com/ayxos" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/marco-a-pajares-silva-0524573a/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="http://ayxos.github.io/" target="_blank" rel="noopener">ayxos.github.io</a>
+          </div>
+        </div>
+        <figure class="hero__card">
+          <img src="https://gitfut.com/ayxos.png?country=es" width="810" height="1230"
+               alt="GitFut player card for Marco A. Pajares Silva — 87 CAM, JavaScript" loading="lazy" decoding="async">
+          <figcaption>Player card · gitfut.com</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -399,11 +390,6 @@
         <div class="stat block rise"><div class="stat__num">Bn+<small>/mo</small></div><div class="stat__lbl">Ad requests flowing through the exchange I help run</div></div>
         <div class="stat block rise"><div class="stat__num">~20</div><div class="stat__lbl">Engineers in the international org I lead</div></div>
         <div class="stat block rise"><div class="stat__num">10<small>/10</small></div><div class="stat__lbl">Grade on my 3D game-dev thesis at UC3M</div></div>
-      </div>
-
-      <div class="hotbar-wrap rise">
-        <div class="hotbar-title">Core stack · hotbar</div>
-        <div class="hotbar" id="hotbar"></div>
       </div>
     </div>
   </section>
@@ -516,27 +502,6 @@
     </div>
   </section>
 
-  <!-- ===== REEL ===== -->
-  <section id="reel">
-    <div class="wrap">
-      <span class="eyebrow">Cutscenes · press play</span>
-      <h2 class="sec-title">Roll the tape</h2>
-      <p class="sec-lead">Before the ad exchanges came 3D games and robots. A couple of clips from the UC3M game-dev days.</p>
-      <div class="reel">
-        <button class="vid" type="button" data-yt="wXhWU8UySsI" aria-label="Play: UC3M Paintball, my 3D game thesis">
-          <span class="vid__tag">Thesis · UDK</span>
-          <span class="vid__play" aria-hidden="true"></span>
-          <span class="vid__title">UC3M Paintball — my 3D game thesis (UDK · Kinect)</span>
-        </button>
-        <button class="vid" type="button" data-yt="A1anLQUxnzg" aria-label="Play: Arduino robot">
-          <span class="vid__tag">Hardware · Arduino</span>
-          <span class="vid__play" aria-hidden="true"></span>
-          <span class="vid__title">Arduino robot with proximity sensing</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== PROJECTS ===== -->
   <section id="projects">
     <div class="wrap">
@@ -605,7 +570,9 @@
         <a class="btn" href="https://github.com/ayxos" target="_blank" rel="noopener">GitHub · ayxos</a>
         <a class="btn" href="https://www.linkedin.com/in/marco-a-pajares-silva-0524573a/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="#" data-v="classic">◱ See my projects</a>
+        <a class="btn" href="https://github.com/ayxos/ayxos.github.io" target="_blank" rel="noopener">⧉ Clone this site</a>
       </div>
+      <p class="clonecmd"><b>$</b> git clone <a href="https://github.com/ayxos/ayxos.github.io.git" target="_blank" rel="noopener">https://github.com/ayxos/ayxos.github.io.git</a></p>
     </div>
   </section>
 
@@ -651,6 +618,13 @@
             <h2 class="section-heading">More recent projects</h2>
             <p class="lead">A few open-source builds created since this page was last updated (2016).</p>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 col-sm-6">
+            <h2 class="section-heading">lumina<br><a target='_blank' href="https://github.com/ayxos/lumina">GitHub &#8599;</a></h2>
+            <p class="lead">A lean self-hosted photo &amp; video gallery — point it at folders you already have and browse, filter, favorite and ZIP-export them. One Docker container, SQLite metadata, no upload pipeline (2026).<br>Code available on <a target="_blank" href="https://github.com/ayxos/lumina">Github</a></p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="lumina" style="width:100%;height:auto;display:block;border-radius:12px"><defs><linearGradient id="cg17" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6b23a"/><stop offset="1" stop-color="#c07f12"/></linearGradient></defs><rect width="400" height="260" rx="14" fill="url(#cg17)"/><g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><rect x="128" y="86" width="144" height="104" rx="12"/><circle cx="200" cy="138" r="26"/><circle cx="248" cy="108" r="7" fill="#fff" stroke="none"/><path d="M128 168 l34 -30 l26 22"/></g></svg></div>
         </div>
       </div>
     </div>
@@ -896,24 +870,9 @@
     setTimeout(drawHero, 60); // recolor voxels for new theme
   });
 
-  /* ---------- HOTBAR ---------- */
-  var STACK = [
-    ["JavaScript","#e9c93a"],["TypeScript","#3178c6"],["Node.js","#5aa24a"],
-    ["React","#4fd6e6"],["PHP","#8892c8"],["Docker","#3aa5e6"],
-    ["ClickHouse","#e6b23a"],["Elastic","#3ac47a"],["MongoDB","#5aa24a"]
-  ];
-  var hb = document.getElementById("hotbar");
-  STACK.forEach(function(s,i){
-    var slot = document.createElement("div");
-    slot.className = "slot";
-    slot.innerHTML = '<span class="slot__key">'+(i+1)+'</span>'+
-      '<span class="slot__ic" style="background:'+s[1]+'"></span>'+
-      '<span class="slot__name">'+s[0]+'</span>';
-    hb.appendChild(slot);
-  });
-
   /* ---------- PROJECTS ---------- */
   var PROJECTS = [
+    {n:"lumina",star:"2026",recent:true,c:"#e6b23a",d:"A lean self-hosted photo & video gallery — point it at folders you already have and browse, filter, favorite and ZIP-export them. One Docker container, SQLite metadata, no upload pipeline.",t:["Node","Express","SQLite","Docker","sharp"],links:[["Code","https://github.com/ayxos/lumina"]]},
     {n:"lanny",star:"Py · 2026",recent:true,c:"#3ac47a",d:"A network-monitoring experiment in Python — still scratching the systems itch.",t:["Python","Networking"],links:[["Code","https://github.com/ayxos/lanny"]]},
     {n:"decky-chat-plugin",star:"2025",recent:true,c:"#4fd6e6",d:"A Decky Loader plugin for the Steam Deck — real-time messaging between your Deck and your phone over WebSockets.",t:["Steam Deck","Decky Loader","WebSockets","TypeScript"],links:[["Code","https://github.com/ayxos/decky-chat-plugin"]]},
     {n:"MyPass",star:"2025",recent:true,c:"#8892c8",d:"A secure password manager — store and manage all your credentials in one place. React front-end, Express API, MySQL.",t:["React","Express","MySQL"],links:[["Code","https://github.com/ayxos/MyPass"]]},
@@ -1121,8 +1080,13 @@
   var GROW_MS=1550, BUILD_MS=1700, MORPH_MS=380;
 
   var lvls = Array.prototype.slice.call(document.querySelectorAll(".lvl[data-tag]"));
+  var journey = document.getElementById("journey");
+  var track = document.getElementById("track");
   var progress=0, cx=60, groundY=0, bob=0, facing=1, walkPhase=0, lastMove=-9999, lastY=window.scrollY;
   var targetStage=0, committed=0, evt=null, morph=null;
+  /* vertical (timeline-climbing) mode: vertT = where we want to be, vertA = eased actual */
+  var vertT=0, vertA=0, laneX=0, laneY=0;
+  var LANE_TOP=165, LANE_BOTTOM=40;
 
   function computeTarget(){
     if(!lvls.length){ targetStage=0; return; }
@@ -1133,12 +1097,36 @@
     }
     targetStage=best;
   }
+  /* while "The run so far" fills the screen, the runner leaves the bottom edge and
+     walks *down* the side of the timeline, tracking scroll progress inside the section */
+  function computeVertical(){
+    if(!journey){ vertT=0; return; }
+    var vh=window.innerHeight, r=journey.getBoundingClientRect();
+    var visible=Math.min(r.bottom,vh)-Math.max(r.top,0);
+    var cover=clamp(visible/Math.min(vh, r.height||vh),0,1);
+    vertT=smooth(clamp((cover-0.4)/0.35,0,1));
+
+    var span=Math.max(1, r.height-vh);
+    var p=clamp(-r.top/span,0,1);
+    var bottom=Math.max(LANE_TOP+20, H-LANE_BOTTOM);
+    laneY=lerp(LANE_TOP, bottom, p);
+
+    /* pick a lane that keeps the runner off the panels: the right gutter, else the
+       left gutter, else the timeline rail itself (narrow screens) */
+    var tr=(track||journey).getBoundingClientRect();
+    var gapR=W-tr.right, gapL=tr.left;
+    if(gapR>=76) laneX=tr.right+gapR/2;
+    else if(gapL>=76) laneX=gapL/2;
+    else laneX=tr.left+18;
+    laneX=clamp(laneX, 30, W-30);
+  }
   function onScroll(){
     var y=window.scrollY, max=Math.max(1, root.scrollHeight-window.innerHeight);
     progress=Math.min(1,Math.max(0,y/max));
     var dy=y-lastY; lastY=y;
     if(Math.abs(dy)>0.4){ facing=dy>0?1:-1; walkPhase+=Math.min(0.55,Math.abs(dy)*0.045); if(walkPhase>1e6)walkPhase=0; lastMove=performance.now(); }
     computeTarget();
+    computeVertical();
   }
   function reconcile(now){
     if(evt||morph) return;
@@ -1302,6 +1290,8 @@
     var spec=BUILDINGS[name]; if(!spec) return;
     var c=clamp(center, 64, W-64);
     ctx.save(); ctx.globalAlpha=alpha;
+    var k=1-0.2*vertA;   /* tucked in a little while climbing beside the timeline */
+    if(k!==1){ ctx.translate(c,baseY); ctx.scale(k,k); ctx.translate(-c,-baseY); }
     var topY=SHAPES[spec.type](c, baseY, spec, glow);
     drawBillboard(c, topY, name, glow);
     ctx.restore();
@@ -1313,7 +1303,7 @@
     ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText("?", x, y+bump);
     ctx.textBaseline="alphabetic";
     ctx.fillStyle=tvar("--diamond","#4fe3d6"); ctx.font="700 10px ui-monospace, Menlo, Consolas, monospace";
-    ctx.fillText("UNIVERSITY", x, y+32+bump);
+    ctx.fillText("UNIVERSITY", clamp(x, 56, W-56), y+32+bump);
     ctx.restore();
   }
   function drawCap(x,y){
@@ -1325,9 +1315,11 @@
 
   function draw(now){
     ctx.clearRect(0,0,W,H);
-    groundY=H-18;
     var margin=48;
-    cx = margin + progress*(W - margin*2 - 96);
+    /* blend between the horizontal ground run and the vertical timeline climb */
+    vertA = reduce ? vertT : vertA + (vertT-vertA)*0.12;
+    cx = lerp(margin + progress*(W - margin*2 - 96), laneX, vertA);
+    groundY = lerp(H-18, laneY, vertA);
     var moving=(now-lastMove)<=150;
 
     if(reduce){ committed=targetStage; evt=null; morph=null; }
@@ -1387,8 +1379,10 @@
       var topY=groundY+bob - CHARH*F.size - 16;
       ctx.textAlign="center"; ctx.font="700 11px ui-monospace, Menlo, Consolas, monospace";
       var label="Lv."+(idx+1)+" · "+lvls[idx].getAttribute("data-tag");
-      ctx.lineWidth=3.5; ctx.strokeStyle="rgba(0,0,0,.4)"; ctx.strokeText(label,cx,topY);
-      ctx.fillStyle=tvar("--diamond","#4fe3d6"); ctx.fillText(label,cx,topY);
+      var half=ctx.measureText(label).width/2+6;   /* keep it on screen when the lane hugs an edge */
+      var lx=clamp(cx, half, Math.max(half, W-half));
+      ctx.lineWidth=3.5; ctx.strokeStyle="rgba(0,0,0,.4)"; ctx.strokeText(label,lx,topY);
+      ctx.fillStyle=tvar("--diamond","#4fe3d6"); ctx.fillText(label,lx,topY);
     }
   }
 
@@ -1445,25 +1439,6 @@
   setView("modern");
 })();
 
-/* ============ GAME-DEV REEL (click to load YouTube) ============ */
-(function(){
-  "use strict";
-  var vids = document.querySelectorAll(".vid[data-yt]");
-  for(var i=0;i<vids.length;i++){
-    (function(v){
-      v.addEventListener("click", function(){
-        var id = v.getAttribute("data-yt");
-        var f = document.createElement("iframe");
-        f.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
-        f.title = v.getAttribute("aria-label") || "Video";
-        f.setAttribute("allow", "autoplay; encrypted-media; fullscreen; picture-in-picture");
-        f.setAttribute("allowfullscreen", "");
-        v.innerHTML = "";
-        v.appendChild(f);
-      }, {once:true});
-    })(vids[i]);
-  }
-})();
 </script>
 </body>
 </html>
