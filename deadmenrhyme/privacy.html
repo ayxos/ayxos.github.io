@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Dead Men Rhyme</title>
+<meta name="description" content="Privacy policy for Dead Men Rhyme. The game collects no data.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0e1219" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#dfe6ee" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://ayxos.com/deadmenrhyme/privacy">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ground:#dfe6ee;
+    --ground-2:#e9eef4;
+    --stone:#ffffff;
+    --stone-2:#f1f5f9;
+    --hi:#ffffff;
+    --lo:#b7c4d3;
+    --ink:#141d28;
+    --ink-dim:#53667b;
+    --line:rgba(18,32,50,.12);
+    --diamond:#0d8f85;
+    --gold:#b3820a;
+    --glow:rgba(13,143,133,.16);
+    --mono:"JetBrains Mono","Cascadia Code",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --maxw:720px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#0e1219;
+      --ground-2:#131924;
+      --stone:#19212d;
+      --stone-2:#202b3a;
+      --hi:#2b3a4e;
+      --lo:#080b10;
+      --ink:#e9eff6;
+      --ink-dim:#94a6bb;
+      --line:rgba(255,255,255,.08);
+      --diamond:#4fe3d6;
+      --gold:#ffcf4d;
+      --glow:rgba(79,227,214,.16);
+    }
+  }
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--ground);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, var(--glow), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 23px, var(--line) 23px 24px),
+      repeating-linear-gradient(90deg, transparent 0 23px, var(--line) 23px 24px);
+    background-attachment:fixed;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--diamond)}
+  a:hover{color:var(--gold)}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding:clamp(28px,6vw,56px) 20px 72px}
+  .eyebrow{
+    font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--diamond);
+    display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;
+  }
+  .eyebrow::before{content:"";width:11px;height:11px;background:var(--diamond);
+    box-shadow:inset 2px 2px 0 rgba(255,255,255,.45),inset -2px -2px 0 rgba(0,0,0,.4)}
+  h1{
+    margin:0;font-family:var(--mono);font-weight:800;letter-spacing:.02em;
+    font-size:clamp(1.5rem,4vw,2.1rem);text-transform:uppercase;text-wrap:balance;
+  }
+  .meta{color:var(--ink-dim);margin:12px 0 0;font-size:.95rem}
+  .card{
+    margin-top:28px;padding:clamp(22px,4vw,32px);
+    background:var(--stone);
+    box-shadow:inset 3px 3px 0 var(--hi), inset -3px -3px 0 var(--lo), 0 10px 0 -3px rgba(0,0,0,.28);
+  }
+  .lede{font-size:1.15rem;font-weight:700;margin:0 0 18px}
+  ul{margin:0;padding-left:1.2em}
+  li{margin:0 0 10px}
+  li:last-child{margin-bottom:0}
+  .contact{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-dim)}
+  .contact strong{color:var(--ink);font-family:var(--mono);font-weight:700}
+  .back{display:inline-block;margin-top:28px;font-family:var(--mono);font-size:.78rem;
+    font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink-dim)}
+  .back:hover{color:var(--diamond)}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Dead Men Rhyme</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Last updated: 2026-08-19</p>
+
+    <article class="card">
+      <p class="lede">Dead Men Rhyme collects no data.</p>
+      <ul>
+        <li>The game does not collect, store, or transmit any personal information.</li>
+        <li>The game does not require an internet connection and makes no network requests.</li>
+        <li>Game progress (unlocked content, settings, volume) is stored only on your own device and never leaves it.</li>
+        <li>The game contains no advertising, no analytics, no third-party SDKs, and no in-app purchases.</li>
+        <li>The game does not knowingly collect any information from anyone, including children.</li>
+      </ul>
+      <p class="contact">If you have any questions about this policy, contact: <strong>[your contact email]</strong></p>
+    </article>
+
+    <a class="back" href="https://ayxos.com/">← ayxos.com</a>
+  </main>
+</body>
+</html>
